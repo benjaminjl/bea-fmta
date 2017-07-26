@@ -1,0 +1,61 @@
+<!--*********************************************************************
+FILE INFO
+*************************************************************************
+Name: dashboard.html
+Purpose: The display file for the Dashboard Page
+Tags: ion-header, ion-navbar, ion-icon, ion-content
+Description: This is the page that will show if the user does not have
+  a default team selected and loading by default.
+Note: None
+Ng Commands: ngFor, click
+Filters: myTeamFilter, favoriteTeamsFilter
+Functions: openFindTeamPage, openOptionsPage, goToTeam, removeMyTeam,
+  removeFavoriteTeam, addMyTeam
+Last Update: 04/07/2017
+*************************************************************************-->
+
+
+
+<!--*********************************************************************
+Name: ion-header
+Purpose: Displays at top of page
+Tags: ion-navbar, ion-icon
+Description:
+Note: None
+Ng Commands: click
+Filters: None
+Functions: 
+Last Update: 07/20/2017
+*************************************************************************-->
+
+<ion-header>
+
+  <ion-navbar>
+    
+    <ion-icon name="menu" (click)="openMenuPage()"></ion-icon>
+
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+<!--*********************************************************************
+Name: ion-content
+Purpose: Displays at top of page
+Tags: 
+Description: 
+Ng Commands: 
+Filters: 
+Functions: 
+Note: None
+Last Update: 07/20/2017
+*************************************************************************-->
+
+<ion-content padding>
+
+  {{ activeTeam }}
+  
+  <!-- Need to reference older versions of the app in order to populate this page as the dashboard -->
+  
+</ion-content>

@@ -1,0 +1,135 @@
+<!--*********************************************************************
+FILE INFO
+*************************************************************************
+Name: menu.html
+Purpose: The display info for the Menu Page
+Tags: ion-header, ion-navbar, ion-title, ion-icon, h4, ion-list, ion-item
+Description: This is the page that will show if the user does not have
+  a default team selected and loading by default.
+Note: None
+Ng Commands: ngFor, click
+Filters: favoriteTeamsFilter
+Functions: openTeamLink, goToTeam, goToLandingPage, closeMenu
+Last Update: 04/07/2017
+*************************************************************************-->
+
+
+
+
+
+<!--*********************************************************************
+Name: ion-header
+Purpose: Displays at top of page
+Tags: ion-navbar, ion-title, ion-icon
+Description: The header will contain the title of the page as well as a
+  button to close the Menu and a button to go to the Landing Page
+Note: None
+Ng Commands: click
+Filters: None
+Functions: TBD
+Last Update: 04/07/2017
+*************************************************************************-->
+
+<ion-header hide-nav-bar="true">
+
+  <ion-navbar>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+
+<!--*********************************************************************
+Name: ion-content
+Purpose: Displays at top of page
+Tags: h4, ion-list, ion-item, ion-icon
+Description: The content of this page consists of two sections. One section
+  displays the teamLinks under the title 'Team Links. The second section
+  will display the user's favorites under the title 'My Favorites'
+Ng Commands: ngFor, click
+Filters: favoriteTeamsFilter
+Functions: openTeamLink, goToTeam, goToLandingPage, closeMenu
+Note: None
+Last Update: 04/07/2017
+*************************************************************************-->
+
+<ion-content padding>
+
+
+
+
+
+<!-- Section for Team Links --> 
+
+  <h4>Team Links</h4>
+
+  <ion-list>
+
+      <ion-item *ngFor="let item of teamLinks" (click)="openTeamLink(item)">
+
+        {{ item.linkDescription }}
+
+      </ion-item>
+
+  </ion-list>
+
+
+
+
+
+<!-- Section for My Favorites --> 
+
+  <h4>My Favorites</h4>
+
+  <ion-list>
+
+      <ion-item *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true'" (click)="goToTeam(item)">
+        
+        {{ item.teamName }}
+      
+      </ion-item>
+
+  </ion-list>
+
+
+
+
+
+<!-- Section for Go To Landing Page link --> 
+
+  <ion-list>
+      
+      <ion-item (click)="goToLandingPage()">
+        
+        <ion-icon item-left name="home"></ion-icon>Home Page
+      
+      </ion-item>
+
+  </ion-list>
+
+
+
+
+
+<!-- Section for Close Menu link --> 
+
+  <ion-list>
+      
+      <ion-item (click)="closeMenu()">
+        
+        <ion-icon item-left name="exit"></ion-icon>Close Menu
+      
+      </ion-item>
+
+  </ion-list>
+
+
+
+
+
+</ion-content>
+
+

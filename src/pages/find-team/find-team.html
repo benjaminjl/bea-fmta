@@ -1,0 +1,48 @@
+<ion-header hide-nav-bar="true"> 
+  <ion-navbar>
+
+    <ion-icon name="exit" (click)="closeMenu()"></ion-icon>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<!--
+  bl- this is the where the list of all available teams
+  is filtered; the filter is provided by the search bar;
+  each item in the list slides to show a button that the
+  user will press to add the team to their favorites;
+  favorites are displayed above
+-->
+
+
+<h4>Find a Team</h4>
+
+<!--
+  bl - using ion-search bar will result in a real feel
+  search with delayed output; will try it out 25Mar2017
+  Reference: https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
+-->
+<ion-searchbar
+  [(ngModel)]="teamSearchInput"
+  [showCancelButton]="shouldShowCancel"
+  >
+</ion-searchbar>
+
+<ion-list>
+  <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput">
+    <ion-item>
+      {{ item.teamName }}
+    </ion-item>
+
+    <ion-item-options side="right">
+      <button color="secondary" ion-button (click)="addFavoriteTeam(slidingItem, item.teamId)">
+        <ion-icon name="star"></ion-icon>
+      </button>
+
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header hide-nav-bar="true"> 
+  <ion-navbar>
+
+    <ion-icon name="exit" (click)="closeMenu()"></ion-icon>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+
+  <ion-item>
+    <ion-label>Load My Team by default</ion-label>
+    <ion-toggle [disabled]="loadMyTeamByDefaultToggleIsDisabled" [(ngModel)]="loadMyTeamByDefault" (ionChange)="setLoadMyTeamByDefault(loadMyTeamByDefault)"></ion-toggle>
+  </ion-item>
+
+</ion-list>
+
+
+
+<!--
+  bl- this is the where the list of all available teams
+  is filtered; the filter is provided by the search bar;
+  each item in the list slides to show a button that the
+  user will press to add the team to their favorites;
+  favorites are displayed above
+-->
+
+
+<h4>Find a Team</h4>
+
+<!--
+  bl - using ion-search bar will result in a real feel
+  search with delayed output; will try it out 25Mar2017
+  Reference: https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
+-->
+
+<ion-list>
+
+<ion-item (click)="clearAppData()"><ion-icon item-left name="trash"></ion-icon> Clear All App Data</ion-item>
+</ion-list>
+
+</ion-content>

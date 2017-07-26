@@ -90,6 +90,8 @@ export class DashboardPage {
 
   activeTeam: any;
   activeTeamName: string;
+  activeTeamType: string;
+  activeTeamIcon: string;
   activeTeamPrimaryColor: string;
   activeTeamSecondaryColor: string;
   activeTeamComplementColor: string;
@@ -139,6 +141,25 @@ ionViewDidLoad(){
   this.activeTeam = this.globalVars.getActiveTeam();
 
   this.activeTeamName = this.activeTeam.teamName;
+  this.activeTeamType = this.activeTeam.teamType;
+
+  switch (this.activeTeamType) {
+    case "Football":
+        this.activeTeamIcon = "md-american-football";
+        break;
+    case "Soccer":
+        this.activeTeamIcon = "md-football";
+        break;
+    case "Basketball":
+        this.activeTeamIcon = "md-basketball";
+        break;
+    case "Baseball":
+        this.activeTeamIcon = "md-baseball";
+        break;
+    default:
+        this.activeTeamIcon = "md-medal";
+    } 
+
   this.activeTeamPrimaryColor = this.activeTeam.teamPrimaryColor;
   this.activeTeamSecondaryColor = this.activeTeam.teamSecondaryColor;
   this.activeTeamComplementColor = this.activeTeam.teamComplementColor;

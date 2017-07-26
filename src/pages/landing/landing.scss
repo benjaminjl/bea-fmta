@@ -2,6 +2,10 @@ page-landing {
 
 }
 
+.page-content{
+    background-color: #324851;
+}
+
 .col-left{
     text-align: left;
 }
@@ -21,22 +25,26 @@ page-landing {
 }
 
 .even ion-item{
-    border-left: 5px solid lightgray;
+    border-left: 5px solid #7DA3A1;
 }
 .odd ion-item{
-    border-left: 5px solid lightsteelblue;
+    border-left: 5px solid #7DA3A1;
 }
 
 .favorite-team{
-    border-left: 5px solid lightgreen;
+    border-left: 5px solid #86AC41;
 }
 
 h4{
-    border: 1px solid black;
+    border: 1px solid #86AC41;
     border-right: none;
     border-bottom: none;
     padding: 10px;
-    color: darkslategray;
+    color: #FFFFFF;
+}
+
+p{
+    color: #FFFFFF;
 }
 
 .main-icon{
@@ -56,10 +64,81 @@ h4{
     padding-top: 14px;
     padding-left: 15px;
 
-    border-left: 15px solid;
+    border-left: 15px solid #86AC41;
+    color: #324851;
 }
 
 .spacer{
     height: 10px;
+}
+
+ion-icon{
+    color: #324851;
+}
+
+.first-icon{
+    border: 1px solid #86AC41;
+    border-left:none;
+    border-bottom:none;
+    height:100%;
+    font-size: 16px;
+}
+
+.first-icon ion-icon{
+    color: #FFFFFF;
+}
+
+.second-icon{
+    border: 1px solid #86AC41;
+    border-right:none;
+    border-left:none;
+    border-bottom:none;
+    height:100%;
+    font-size: 16px;
+}
+
+.second-icon ion-icon{
+    color: #FFFFFF;
+}
+
+.third-icon{
+    border: 1px solid #86AC41;
+    border-right:none;
+    border-left:none;
+    border-bottom:none;
+    height:100%;
+    font-size: 16px;
+}
+
+.third-icon ion-icon{
+    color: #FFFFFF;
+}
+
+
+.fourth-icon{
+    border: 1px solid #86AC41;
+    border-right:none;
+    border-bottom:none;
+    height:100%;
+    font-size: 16px;
+}
+
+.fourth-icon ion-icon{
+    color: #FFFFFF;
+}
+
+
+.middle-icon{
+    font-size: 40px;
+}
+
+.middle-icon ion-icon{
+    color: #FFFFFF;
+}
+
+.app-title{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
 }
 

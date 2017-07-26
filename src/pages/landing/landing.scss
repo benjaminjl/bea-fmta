@@ -1,3 +1,46 @@
 page-landing {
 
 }
+
+.col-left{
+    text-align: left;
+}
+
+.col-right{
+    text-align: right;
+}
+
+.checkmark{
+    border-radius: 0px 3px 3px 0px;
+    color: #FFFFFF;
+    background-color: #449E1E;
+}
+
+.close{
+    border-radius: 3px 0px 0px 3px;
+    color: #FFFFFF;
+    background-color: #A51212;
+}
+
+.even ion-item{
+    background-color: lightgray;
+}
+.odd ion-item{
+    background-color: lightblue;
+}
+
+.favorite-team{
+    background-color: lightgreen;
+}
+
+h4{
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: none;
+    padding: 10px;
+    color: darkslategray;
+}
+
+.main-icon{
+    font-size: 26px;
+}

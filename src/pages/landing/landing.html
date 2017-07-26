@@ -35,11 +35,25 @@ Last Update: 03/31/2017
 
   <ion-navbar>
 
-    <ion-title>Landing</ion-title>
+    <ion-grid>
+      
+      <ion-row>
+      
+        <ion-col class="col-left">
+          
+          <ion-icon name="search" (click)="openFindTeamPage()"></ion-icon>
 
-    <ion-icon name="search" (click)="openFindTeamPage()"></ion-icon>
+        </ion-col>
+      
+        <ion-col class="col-right">
+        
+          <ion-icon name="options" (click)="openOptionsPage()"></ion-icon>
 
-    <ion-icon name="options" (click)="openOptionsPage()"></ion-icon>
+        </ion-col>
+      
+      </ion-row>
+
+    </ion-grid>
 
   </ion-navbar>
 
@@ -65,29 +79,25 @@ Last Update: 03/31/2017
 
 <ion-content padding>
 
-
-
-
-
 <!-- Section for My Team --> 
 
   <h4>My Team</h4>
 
-  <ion-list>
+  <ion-list no-lines>
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | myTeamFilter: 'true'">
       
-      <ion-item (click)="goToTeam(item)">
+      <ion-item class= "favorite-team" (click)="goToTeam(item)">
 
         {{ item.teamName }}
       
       </ion-item>
 
-        <ion-item-options side="left">
+      <ion-item-options side="left">
 
-        <button color="danger" ion-button (click)="removeMyTeam(slidingItem, item.teamId)">
+        <button class="close" (click)="removeMyTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="trash"></ion-icon>
+          <ion-icon name="close"></ion-icon>
         
         </button>
 
@@ -105,9 +115,13 @@ Last Update: 03/31/2017
 
   <h4>My Favorites</h4>
 
-  <ion-list>
+  <ion-list no-lines>
 
-    <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true'">
+    <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true';
+                                           let isOdd=odd;
+                                           let isEven=even;"
+                                           [class.odd]="isOdd" 
+                                           [class.even]="isEven">
       
       <ion-item (click)="goToTeam(item)">
         
@@ -117,9 +131,9 @@ Last Update: 03/31/2017
 
       <ion-item-options side="left">
         
-        <button color="danger" ion-button (click)="removeFavoriteTeam(slidingItem, item.teamId)">
+        <button class="close" (click)="removeFavoriteTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="trash"></ion-icon>
+          <ion-icon name="close"></ion-icon>
         
         </button>
         
@@ -128,9 +142,9 @@ Last Update: 03/31/2017
       
       <ion-item-options side="right">
         
-        <button color="primary" ion-button (click)="addMyTeam(slidingItem, item.teamId)">
+        <button class="checkmark" (click)="addMyTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="flag"></ion-icon>
+          <ion-icon name="checkmark"></ion-icon>
         
         </button>
 

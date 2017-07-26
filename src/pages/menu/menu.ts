@@ -140,7 +140,7 @@ ionViewDidLoad(){
 
   this.availableTeams = this.globalVars.getAvailableTeams();  // Set the availableTeams variable
 
-  this.teamLinks = this.globalVars.getTeamLinks();            // Set the teamLinks variable
+  //this.teamLinks = this.globalVars.getTeamLinks();          // REMOVED 07262017 - Set the teamLinks variable
 
 }
 

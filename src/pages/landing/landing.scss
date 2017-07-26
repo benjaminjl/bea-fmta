@@ -11,26 +11,24 @@ page-landing {
 }
 
 .checkmark{
-    border-radius: 0px 3px 3px 0px;
     color: #FFFFFF;
     background-color: #449E1E;
 }
 
 .close{
-    border-radius: 3px 0px 0px 3px;
     color: #FFFFFF;
     background-color: #A51212;
 }
 
 .even ion-item{
-    background-color: lightgray;
+    border-left: 5px solid lightgray;
 }
 .odd ion-item{
-    background-color: lightblue;
+    border-left: 5px solid lightsteelblue;
 }
 
 .favorite-team{
-    background-color: lightgreen;
+    border-left: 5px solid lightgreen;
 }
 
 h4{
@@ -44,3 +42,24 @@ h4{
 .main-icon{
     font-size: 26px;
 }
+
+.custom-toolbar{
+    margin-top: 15px;
+    width: 95%;
+}
+
+.custom-toolbar .banner{
+    height: 50px;
+    font-weight: 500;
+    font-size: 18px;
+
+    padding-top: 14px;
+    padding-left: 15px;
+
+    border-left: 15px solid;
+}
+
+.spacer{
+    height: 10px;
+}
+

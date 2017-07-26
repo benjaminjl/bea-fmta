@@ -30,19 +30,6 @@ export class GlobalVarsProvider {
     return this._activeTeam;
   }
 
-
-// -- Team Links
-
-  _teamLinks: Array<any>;
-
-  setTeamLinks(passed_TeamLinks){
-    this._teamLinks = passed_TeamLinks;
-  }
-
-  getTeamLinks(){
-    return this._teamLinks;
-  }
-
 // -- My Team
 
   _myTeamIsSet: boolean;

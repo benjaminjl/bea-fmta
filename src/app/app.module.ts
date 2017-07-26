@@ -27,6 +27,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MyTeamFilterPipe } from '../pipes/pipe.my-team-filter';
 import { FindTeamFilterPipe } from '../pipes/pipe.find-team-filter';
 import { FavoriteTeamsFilterPipe } from '../pipes/pipe.favorite-teams-filter';
+import { RecordFilterPipe } from '../pipes/pipe.record-filter';
 
 /* bl - new providers created by bl */
 import { GoogleSheetsProvider } from '../providers/google-sheets';
@@ -49,7 +50,8 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     /* bl - new custom pipes created by bl */
     MyTeamFilterPipe,
     FindTeamFilterPipe,
-    FavoriteTeamsFilterPipe
+    FavoriteTeamsFilterPipe,
+    RecordFilterPipe
     
 
   ],

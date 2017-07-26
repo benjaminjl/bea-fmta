@@ -1,4 +1,4 @@
-<ion-header hide-nav-bar="true"> 
+<ion-header no-border hide-nav-bar="true"> 
   
   <ion-navbar>
 
@@ -16,16 +16,25 @@
     
     </ion-grid>
     
-
   </ion-navbar>
+
+<!-- May want to take out of grid -->
+
+<ion-toolbar class="custom-toolbar">
+
+  <div class="banner">Options</div>
+  
+</ion-toolbar>
 
 </ion-header>
 
 <ion-content padding>
 
-<h4>Options</h4>
+  <div class="spacer"></div>
 
-<ion-list no-lines>
+<h4>Load on Startup</h4>
+
+<ion-list>
 
   <ion-item>
 
@@ -34,6 +43,13 @@
     <ion-toggle [disabled]="loadMyTeamByDefaultToggleIsDisabled" [(ngModel)]="loadMyTeamByDefault" (ionChange)="setLoadMyTeamByDefault(loadMyTeamByDefault)"></ion-toggle>
   
   </ion-item>
+
+</ion-list>
+
+
+<h4>Clear App Data</h4>
+
+<ion-list>
 
   <ion-item (click)="clearAppData()"><ion-icon item-right name="refresh"></ion-icon> Clear All App Data</ion-item>
 

@@ -31,7 +31,7 @@ Functions: openFindTeamPage, openOptionsPage
 Last Update: 03/31/2017
 *************************************************************************-->
 
-<ion-header>
+<ion-header no-border>
 
   <ion-navbar>
 
@@ -39,15 +39,15 @@ Last Update: 03/31/2017
       
       <ion-row>
       
-        <ion-col class="col-left">
+        <ion-col class="col-left" (click)="openFindTeamPage()">
           
-          <ion-icon name="search" (click)="openFindTeamPage()"></ion-icon>
+          <ion-icon name="search"></ion-icon>
 
         </ion-col>
       
-        <ion-col class="col-right">
+        <ion-col class="col-right" (click)="openOptionsPage()">
         
-          <ion-icon name="options" (click)="openOptionsPage()"></ion-icon>
+          <ion-icon name="options"></ion-icon>
 
         </ion-col>
       
@@ -56,6 +56,14 @@ Last Update: 03/31/2017
     </ion-grid>
 
   </ion-navbar>
+
+  <!-- May want to take out of grid -->
+
+<ion-toolbar class="custom-toolbar">
+
+  <div class="banner">Follow My Team</div>
+  
+</ion-toolbar>
 
 </ion-header>
 
@@ -79,11 +87,13 @@ Last Update: 03/31/2017
 
 <ion-content padding>
 
+  <div class="spacer"></div>
+
 <!-- Section for My Team --> 
 
   <h4>My Team</h4>
 
-  <ion-list no-lines>
+  <ion-list>
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | myTeamFilter: 'true'">
       
@@ -108,14 +118,14 @@ Last Update: 03/31/2017
   </ion-list>
 
 
-
+  <div class="spacer"></div>
 
 
 <!-- Section for My Favorites --> 
 
   <h4>My Favorites</h4>
 
-  <ion-list no-lines>
+  <ion-list>
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true';
                                            let isOdd=odd;

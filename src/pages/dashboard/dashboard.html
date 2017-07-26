@@ -28,13 +28,34 @@ Functions:
 Last Update: 07/20/2017
 *************************************************************************-->
 
-<ion-header>
+<ion-header no-border>
 
   <ion-navbar>
     
-    <ion-icon name="menu" (click)="openMenuPage()"></ion-icon>
+    <ion-grid>
+      
+      <ion-row>
+        
+        <ion-col (click)="goToLandingPage()">
+          
+          <ion-icon name="home"></ion-icon>
+        
+        </ion-col>
+      
+      </ion-row>
+    
+    </ion-grid>
+    
 
   </ion-navbar>
+
+  <!-- May want to take out of grid -->
+
+<ion-toolbar class="custom-toolbar">
+
+  <div  [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamPrimaryColor}" class="banner">{{ activeTeamName }}</div>
+  
+</ion-toolbar>
   
 </ion-header>
 
@@ -52,9 +73,89 @@ Note: None
 Last Update: 07/20/2017
 *************************************************************************-->
 
-<ion-content padding>
+<ion-content [ngStyle]="{'background-color': activeTeamPrimaryColor}" padding>
 
-  {{ activeTeam }}
+
+	<ion-grid>
+
+		<ion-row *ngFor="let item of (teamRecord | recordFilter: 'overall')">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" col-2 text-center align-self-end> W </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" col-2 text-left align-self-end> {{ item.recordWins }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="team-icon" text-center> <ion-icon name="md-american-football"></ion-icon> </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" col-2 text-right align-self-end> {{ item.recordLosses }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" col-2 text-center align-self-end> L </ion-col>
+      
+    </ion-row>
+    
+		<ion-row *ngFor="let item of teamYear">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="year" text-center> {{ item.yearYear }} </ion-col>
+      
+    </ion-row>
+
+    <div class="spacer"></div>
+
+		<ion-row>
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" text-center> Win Percentages </ion-col>
+      
+    </ion-row>
+
+    <ion-row *ngFor="let item of (teamRecord | recordFilter: 'overall')">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right> {{ item.recordTypeOfRecord }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right"text-left> {{ item.recordWinPercentage }} </ion-col>
+      
+    </ion-row>
+    
+		<ion-row *ngFor="let item of (teamRecord | recordFilter: 'conference')">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right> {{ item.recordTypeOfRecord }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right"text-left> {{ item.recordWinPercentage }} </ion-col>
+      
+    </ion-row>
+    
+		<ion-row *ngFor="let item of (teamRecord | recordFilter: 'home')">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right> {{ item.recordTypeOfRecord }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" text-left> {{ item.recordWinPercentage }} </ion-col>
+      
+		</ion-row>
+		<ion-row *ngFor="let item of (teamRecord | recordFilter: 'away')">
+
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right> {{ item.recordTypeOfRecord }} </ion-col>
+      
+      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" text-left> {{ item.recordWinPercentage }} </ion-col>
+      
+    </ion-row>
+    
+	</ion-grid>
+
+
+
+
+
+  <div class="spacer"></div>
+
+
+
+
+
+  <h4 [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}">Team Links</h4>
+
+  <ion-list>
+
+  <ion-item *ngFor="let item of teamLinks" (click)="openTeamLink(item)">{{ item.linkDescription }}</ion-item>
+
+  </ion-list>
   
   <!-- Need to reference older versions of the app in order to populate this page as the dashboard -->
   

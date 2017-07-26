@@ -30,11 +30,39 @@ Functions: TBD
 Last Update: 04/07/2017
 *************************************************************************-->
 
-<ion-header hide-nav-bar="true">
+<ion-header no-border hide-nav-bar="true">
 
   <ion-navbar>
 
+    <ion-grid>
+      
+      <ion-row>
+        
+        <ion-col class="col-left" (click)="closeMenu()">
+          
+          <ion-icon item-left name="arrow-back"></ion-icon>
+        
+        </ion-col>
+
+        <ion-col class="col-right" (click)="goToLandingPage()">
+          
+          <ion-icon item-left name="home"></ion-icon>
+        
+        </ion-col>
+        
+        </ion-row>
+      
+      </ion-grid>
+
   </ion-navbar>
+
+    <!-- May want to take out of grid -->
+
+<ion-toolbar class="custom-toolbar">
+
+  <div class="banner">Menu</div>
+  
+</ion-toolbar>
 
 </ion-header>
 
@@ -59,19 +87,19 @@ Last Update: 04/07/2017
 <ion-content padding>
 
 
+<div class="spacer"></div>
 
 
+<!-- Section for My Favorites --> 
 
-<!-- Section for Team Links --> 
-
-  <h4>Team Links</h4>
+  <h4>My Team</h4>
 
   <ion-list>
 
-      <ion-item *ngFor="let item of teamLinks" (click)="openTeamLink(item)">
-
-        {{ item.linkDescription }}
-
+      <ion-item *ngFor="let item of availableTeams | myTeamFilter: 'true'" (click)="goToTeam(item)">
+        
+        {{ item.teamName }}
+      
       </ion-item>
 
   </ion-list>
@@ -93,42 +121,6 @@ Last Update: 04/07/2017
       </ion-item>
 
   </ion-list>
-
-
-
-
-
-<!-- Section for Go To Landing Page link --> 
-
-  <ion-list>
-      
-      <ion-item (click)="goToLandingPage()">
-        
-        <ion-icon item-left name="home"></ion-icon>Home Page
-      
-      </ion-item>
-
-  </ion-list>
-
-
-
-
-
-<!-- Section for Close Menu link --> 
-
-  <ion-list>
-      
-      <ion-item (click)="closeMenu()">
-        
-        <ion-icon item-left name="exit"></ion-icon>Close Menu
-      
-      </ion-item>
-
-  </ion-list>
-
-
-
-
 
 </ion-content>
 

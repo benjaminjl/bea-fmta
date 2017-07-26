@@ -28,7 +28,7 @@ Last Update: 07/16/17
   import {    
     
     NavController,    // Controller used to create navCtrl which is used for changing pages/views
-    ModalController,  // Controller used to create the modalCtrl which is used for showing the menus
+    ViewController, // Controller used to create viewCtrl which is used for closing the Menu modal
     App               // Controller used to create app which is used for setting the page/view roots
     
   } from 'ionic-angular';
@@ -36,7 +36,9 @@ Last Update: 07/16/17
   import { GoogleSheetsProvider } from '../../providers/google-sheets';   // Custom provider that creates googleSheets which is used for calling functions from the GoogleSheetsProvider
   import { GlobalVarsProvider } from '../../providers/global-vars';       // Custom provider that creates GlobalVarsProvider which is use for calling functions from the GlobalVarsProvider provider
 
-  import { MenuPage } from '../menu/menu'   // Page that is shown via the modalCtrl that acts as a menu with options
+  import { InAppBrowser } from '@ionic-native/in-app-browser';  // Controller that creates inAppBrowser which is used to open the Team Links in the user's default browswer
+
+  import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
 
 
 
@@ -79,12 +81,18 @@ export class DashboardPage {
 
   availableTeams: Array<any>;
   teamLinks: Array<any>;
+  teamRecord: Array<any>;
+  teamYear: Array<any>;
 
   spreadsheetId: string;
   apiKey: string;
   sheetName: string;
 
-  activeTeam: string;
+  activeTeam: any;
+  activeTeamName: string;
+  activeTeamPrimaryColor: string;
+  activeTeamSecondaryColor: string;
+  activeTeamComplementColor: string;
 
 
 /*********************************************************************
@@ -103,7 +111,8 @@ Last Update: 07/20/2017
     public navCtrl: NavController,              // Used for changing pages
     public googleSheets: GoogleSheetsProvider,  // Used for calling functions from GoogleSheetsProvider
     public globalVars: GlobalVarsProvider,      // Used for calling functions from GlobalVarsProvider
-    public modalCtrl: ModalController,          // Used for opening pages that act as menus
+    public viewCtrl: ViewController,            // Used for closing the Menu modal
+    public inAppBrowser: InAppBrowser,          // Used for opening the Team Links in the user's default browser
     public app: App                             // Used for setting page/view roots
 
 
@@ -127,25 +136,61 @@ Last Update: 07/20/2017
 
 ionViewDidLoad(){
 
-  this.activeTeam = this.globalVars.getActiveTeam().teamName;
+  this.activeTeam = this.globalVars.getActiveTeam();
+
+  this.activeTeamName = this.activeTeam.teamName;
+  this.activeTeamPrimaryColor = this.activeTeam.teamPrimaryColor;
+  this.activeTeamSecondaryColor = this.activeTeam.teamSecondaryColor;
+  this.activeTeamComplementColor = this.activeTeam.teamComplementColor;
 
 // -- Get Active Team info
 
-  this.spreadsheetId = this.globalVars.getActiveTeam().teamSpreadsheetId;
-  this.apiKey = this.globalVars.getActiveTeam().teamApiKey;
+  this.spreadsheetId = this.activeTeam.teamSpreadsheetId;
+  this.apiKey = this.activeTeam.teamApiKey;
 
 
-// -- Get the Team Links for the MenuPage
-
-  this.sheetName = 'Links';
+// -- Get the Team Links
     
-    this.googleSheets.loadTeams( this.spreadsheetId, this.sheetName, this.apiKey )
+    this.googleSheets.loadTeams( this.spreadsheetId, 'Links', this.apiKey )
       
       .then( ( data ) => {
 
         this.teamLinks = data;
 
-        this.globalVars.setTeamLinks(this.teamLinks);
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+
+// -- Get the Team Record
+    
+    this.googleSheets.loadTeams( this.spreadsheetId, 'Record', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamRecord = data;
+
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+// -- Get the Team Year
+    
+    this.googleSheets.loadTeams( this.spreadsheetId, 'Year', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamYear = data;
 
       }, (error) => {
 
@@ -161,23 +206,48 @@ ionViewDidLoad(){
 
 
 
-
 /*********************************************************************
-Name: openMenuPage
-Purpose: Opens the Menu Page
+Name: goToLandingPage
+Purpose: Takes the user back to the Landing Page
 Parameters: None
-Description: This function will open the Menu page for the user.
-Note: This is a modal page that displays over the other pages.
-References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
-Last Update: 07/20/2017
+Description: When the user presses the home button within the Menu:
+
+  (1) The app controller will set the root nav to the Landing Page
+
+  (2) The viewCtrl will close the Menu modal
+  
+Note: None
+References: None
+Last Update: 04/07/2017
 *********************************************************************/
 
-  openMenuPage(){
+  goToLandingPage(){
 
-  let profileModal = this.modalCtrl.create(MenuPage);
-   
-    profileModal.present();
-   
+    this.app.getRootNav().setRoot(LandingPage); // Set the root nav
+
+  }
+
+
+
+
+
+/*********************************************************************
+Name: openTeamLink
+Purpose: Open the Team Link that the user selects
+Parameters: passed_TeamLink
+Description: When the user presses a Team Link within the Menu the
+  TeamLink object is passed to this function and then used to open
+  the link via the inAppBrowser controller which opens the link
+  within the user's default browser.
+Note: None
+References: https://github.com/driftyco/ionic-conference-app/
+Last Update: 04/07/2017
+*********************************************************************/
+
+  openTeamLink(passed_Team: any) {
+
+      this.inAppBrowser.create(passed_Team.linkWebsiteLink, '_blank');  // Open the Team Link within the user's default browser
+
   }
 
 }

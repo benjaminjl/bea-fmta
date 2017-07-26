@@ -1,4 +1,4 @@
-<ion-header hide-nav-bar="true"> 
+<ion-header no-border hide-nav-bar="true"> 
   
   <ion-navbar>
 
@@ -19,9 +19,19 @@
 
   </ion-navbar>
 
+  <!-- May want to take out of grid -->
+
+<ion-toolbar class="custom-toolbar">
+
+  <div class="banner">Find a Team</div>
+  
+</ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
+
+  <div class="spacer"></div>
 
 <!--
   bl- this is the where the list of all available teams
@@ -31,8 +41,6 @@
   favorites are displayed above
 -->
 
-
-<h4>Find a Team</h4>
 <p>Type the team name in the search bar then swipe-left-check to add to favorites.</p>
 
 <!--
@@ -43,7 +51,9 @@
 
 <ion-searchbar [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
 
-<ion-list no-lines>
+<div class="spacer"></div>
+
+<ion-list>
 
   <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput;
                                          let isOdd=odd;

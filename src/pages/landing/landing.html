@@ -61,7 +61,28 @@ Last Update: 03/31/2017
 
 <ion-toolbar no-padding class="custom-toolbar">
 
-  <div class="banner" style="font-weight: 500">Follow My Team</div>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-1 style="background-color: #86AC41;"></ion-col>
+      <ion-col col-18>
+  <ion-grid class="landing-banner">
+	<ion-row>
+		<ion-col class="first-icon" text-center col-3 align-self-center><ion-icon name="md-american-football"></ion-icon></ion-col>
+		<ion-col class="second-icon" text-center col-3 align-self-center><ion-icon name="md-baseball"></ion-icon></ion-col>
+		<ion-col class="middle-icon" text-center col-8 align-self-start><ion-icon name="md-medal"></ion-icon></ion-col>
+		<ion-col class="third-icon" text-center col-3 align-self-center><ion-icon name="md-basketball"></ion-icon></ion-col>
+		<ion-col class="fourth-icon" text-center col-3 align-self-center><ion-icon name="md-football"></ion-icon></ion-col>
+  </ion-row>
+
+      <ion-row>
+      <ion-col class="app-title">Follow My Team</ion-col>
+  </ion-row>
+
+</ion-grid>
+    </ion-col>
+<ion-col col-1 style="background: #324851;"></ion-col>
+  </ion-row>
+</ion-grid>
   
 </ion-toolbar>
 
@@ -87,21 +108,6 @@ Last Update: 03/31/2017
 
 <ion-content class="page-content" padding>
 
-  <ion-grid margin-bottom>
-	<ion-row>
-		<ion-col class="first-icon" text-center col-2 align-self-center><ion-icon name="md-american-football"></ion-icon></ion-col>
-		<ion-col class="second-icon" text-center col-2 align-self-center><ion-icon name="md-baseball"></ion-icon></ion-col>
-		<ion-col class="middle-icon" text-center col-4 align-self-start><ion-icon name="md-medal"></ion-icon></ion-col>
-		<ion-col class="third-icon" text-center col-2 align-self-center><ion-icon name="md-basketball"></ion-icon></ion-col>
-		<ion-col class="fourth-icon" text-center col-2 align-self-center><ion-icon name="md-football"></ion-icon></ion-col>
-  </ion-row>
-
-      <ion-row>
-      <ion-col class="app-title">Follow My Team</ion-col>
-  </ion-row>
-
-</ion-grid>
-
 <!-- Section for My Team --> 
 
   <h4>My Team</h4>
@@ -120,7 +126,7 @@ Last Update: 03/31/2017
 
         <button class="close" (click)="removeMyTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="close"></ion-icon>
+          <ion-icon name="close" style="color: #FFFFFF"></ion-icon>
         
         </button>
 
@@ -131,12 +137,12 @@ Last Update: 03/31/2017
   </ion-list>
 
 
-  <div class="spacer"></div>
+
 
 
 <!-- Section for My Favorites --> 
 
-  <h4>My Favorites</h4>
+  <h4>Favorites</h4>
 
   <ion-list>
 
@@ -156,7 +162,7 @@ Last Update: 03/31/2017
         
         <button class="close" (click)="removeFavoriteTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="close"></ion-icon>
+          <ion-icon name="close" style="color: #FFFFFF"></ion-icon>
         
         </button>
         
@@ -167,7 +173,7 @@ Last Update: 03/31/2017
         
         <button class="checkmark" (click)="addMyTeam(slidingItem, item.teamId)">
           
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon name="checkmark" style="color: #FFFFFF"></ion-icon>
         
         </button>
 

@@ -53,7 +53,8 @@ p{
 
 .custom-toolbar{
     margin-top: 15px;
-    width: 95%;
+    color: #324851;
+    display: inline-block;
 }
 
 .custom-toolbar .banner{
@@ -63,11 +64,13 @@ p{
 
     padding-top: 14px;
     padding-left: 15px;
+}
 
-    border: 1px solid #86AC41;
-    border-right: none;
-    border-left: 15px solid #86AC41;
-    color: #324851;
+.custom-toolbar .landing-banner{
+    font-weight: 500;
+    font-size: 18px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .spacer{
@@ -86,9 +89,7 @@ ion-icon{
     font-size: 16px;
 }
 
-.first-icon ion-icon{
-    color: #FFFFFF;
-}
+
 
 .second-icon{
     border: 1px solid #86AC41;
@@ -99,9 +100,6 @@ ion-icon{
     font-size: 16px;
 }
 
-.second-icon ion-icon{
-    color: #FFFFFF;
-}
 
 .third-icon{
     border: 1px solid #86AC41;
@@ -112,11 +110,6 @@ ion-icon{
     font-size: 16px;
 }
 
-.third-icon ion-icon{
-    color: #FFFFFF;
-}
-
-
 .fourth-icon{
     border: 1px solid #86AC41;
     border-right:none;
@@ -125,22 +118,15 @@ ion-icon{
     font-size: 16px;
 }
 
-.fourth-icon ion-icon{
-    color: #FFFFFF;
-}
-
-
 .middle-icon{
     font-size: 40px;
+    padding: 0px;
 }
 
-.middle-icon ion-icon{
-    color: #FFFFFF;
-}
 
 .app-title{
     text-align: center;
-    color: #FFFFFF;
     font-size: 16px;
+    margin: 0px;
 }
 

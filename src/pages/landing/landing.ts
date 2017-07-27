@@ -169,7 +169,7 @@ Last Update: 03/31/2017
 
           title: 'Remove Favorite',
 
-          message: "Are you sure that you would like to remove this team from Favorites?",
+          message: "Remove this team from Favorites?",
 
           buttons: [
 
@@ -308,7 +308,7 @@ Last Update: 04/07/2017
 
           title: 'My Team Already Set',
 
-          message: "This team is already set as your team!",
+          message: "This team is already set!",
 
           buttons: [
 
@@ -338,7 +338,7 @@ Last Update: 04/07/2017
 
           title: 'New My Team',
 
-          message: "Are you sure that you would like to set this as your new team?",
+          message: "Set this as your new team?",
 
           buttons: [
 
@@ -455,7 +455,7 @@ Last Update: 03/31/2017
               
               title: 'Remove My Team',
 
-              message: "Are you sure that you would like remove your team?",
+              message: "Remove your team?",
 
               buttons: [
 

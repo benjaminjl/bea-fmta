@@ -53,7 +53,32 @@ Last Update: 07/20/2017
 
 <ion-toolbar no-padding class="custom-toolbar">
 
-  <div  [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamPrimaryColor}" class="banner">Schedule</div>
+  <ion-grid no-padding>
+    
+    <ion-row>
+      
+      <ion-col col-1 [ngStyle]="{'background-color': activeTeamSecondaryColor}"></ion-col>
+      
+      <ion-col col-18>
+  
+        <ion-grid class="landing-banner">
+  
+          <ion-row>
+    
+            <ion-col [ngStyle]="{'color': activeTeamPrimaryColor}"> Schedule </ion-col>
+  
+          </ion-row>
+
+
+        </ion-grid>
+    
+      </ion-col>
+
+      <ion-col col-1 [ngStyle]="{'background-color': activeTeamPrimaryColor}"></ion-col>
+  
+    </ion-row>
+
+  </ion-grid>
   
 </ion-toolbar>
   

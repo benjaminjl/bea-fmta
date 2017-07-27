@@ -6,9 +6,9 @@
       
       <ion-row>
         
-        <ion-col>
+        <ion-col (click)="closeMenu()">
           
-          <ion-icon name="arrow-back" (click)="closeMenu()"></ion-icon>
+          <ion-icon name="arrow-back"></ion-icon>
         
         </ion-col>
       
@@ -22,15 +22,42 @@
 
 <ion-toolbar no-padding class="custom-toolbar">
 
-  <div class="banner">Options</div>
+  <ion-grid no-padding>
+    
+    <ion-row>
+      
+      <ion-col col-1 style="background-color: #86AC41;"></ion-col>
+      
+      <ion-col col-18>
+  
+        <ion-grid class="landing-banner">
+  
+          <ion-row>
+    
+            <ion-col> Options </ion-col>
+  
+          </ion-row>
+
+
+        </ion-grid>
+    
+      </ion-col>
+
+      <ion-col col-1 style="background: #324851;"></ion-col>
+  
+    </ion-row>
+
+  </ion-grid>
   
 </ion-toolbar>
 
 </ion-header>
 
-<ion-content class="page-content" padding>
 
-  <div class="spacer"></div>
+
+
+
+<ion-content class="page-content" padding>
 
 <h4>Load on Startup</h4>
 
@@ -46,7 +73,6 @@
 
 </ion-list>
 
-<div class="spacer"></div>
 
 <h4>Clear App Data</h4>
 

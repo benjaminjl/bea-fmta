@@ -80,7 +80,7 @@ clearAppData(){
 
   let alert = this.alertCtrl.create({
       title: 'Clear App Data',
-      message: "Are you sure that you would like to clear all of this app's data?",
+      message: "Clear all of data including Favorites?",
       buttons: [
         {
           text: 'Cancel',

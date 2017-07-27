@@ -6,9 +6,9 @@
       
       <ion-row>
         
-        <ion-col>
+        <ion-col (click)="closeMenu()">
           
-          <ion-icon name="md-arrow-back" (click)="closeMenu()"></ion-icon>
+          <ion-icon name="md-arrow-back"></ion-icon>
         
         </ion-col>
       
@@ -23,15 +23,38 @@
 
 <ion-toolbar no-padding class="custom-toolbar">
 
-  <div class="banner">Find a Team</div>
+  <ion-grid no-padding>
+    
+    <ion-row>
+      
+      <ion-col col-1 style="background-color: #86AC41;"></ion-col>
+      
+      <ion-col col-18>
+  
+        <ion-grid class="landing-banner">
+  
+          <ion-row>
+    
+            <ion-col> Find a Team </ion-col>
+  
+          </ion-row>
+
+
+        </ion-grid>
+    
+      </ion-col>
+
+      <ion-col col-1 style="background: #324851;"></ion-col>
+  
+    </ion-row>
+
+  </ion-grid>
   
 </ion-toolbar>
 
 </ion-header>
 
 <ion-content class="page-content" padding>
-
-  <div class="spacer"></div>
 
 <!--
   bl- this is the where the list of all available teams
@@ -48,8 +71,6 @@
 -->
 
 <ion-searchbar [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
-
-<div class="spacer"></div>
 
 <ion-list>
 
@@ -69,7 +90,7 @@
       
       <button class="checkmark" (click)="addFavoriteTeam(slidingItem, item.teamId)">
         
-        <ion-icon name="checkmark"></ion-icon>
+        <ion-icon name="checkmark" style="color: #FFFFFF"></ion-icon>
       
       </button>
 

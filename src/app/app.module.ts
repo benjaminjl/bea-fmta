@@ -56,7 +56,7 @@ import { GlobalVarsProvider } from '../providers/global-vars';
 
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'bottom'}), // Placing tabs at bottom by default
 
     /* bl - new imports created by bl */
     IonicStorageModule.forRoot(),

@@ -149,11 +149,17 @@ ionViewDidLoad(){
     case "Soccer":
         this.activeTeamIcon = "md-football";
         break;
+    case "Cross Country":
+        this.activeTeamIcon = "md-walk";
+        break;
     case "Basketball":
         this.activeTeamIcon = "md-basketball";
         break;
     case "Baseball":
         this.activeTeamIcon = "md-baseball";
+        break;
+    case "Track":
+        this.activeTeamIcon = "md-walk";
         break;
     default:
         this.activeTeamIcon = "md-medal";

@@ -76,3 +76,37 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// Overrides
+// --------------------------------------------------
+$toolbar-ios-height: 0px;
+$toolbar-md-height: 0px;
+$toolbar-wp-height: 0px;
+
+$toolbar-ios-padding: 0px;
+$toolbar-md-padding: 0px;
+$toolbar-wp-padding: 0px;
+
+$content-padding: 5%;
+
+$grid-columns: 20;
+
+$toggle-ios-background-color-on: lighten(#86AC41, 25%);
+$toggle-md-handle-background-color-on: #86AC41;
+$toggle-md-track-background-color-on: lighten(#86AC41, 25%);
+
+$toggle-wp-handle-background-color-off: lightgray;
+$toggle-wp-track-border-color-off: lightgray;
+
+$toggle-wp-handle-background-color-on: #86AC41;
+$toggle-wp-track-background-color-on: lighten(#86AC41, 25%);
+$toggle-wp-track-border-color-on: #86AC41;
+
+$searchbar-ios-background-color: #324851;
+$searchbar-ios-padding-vertical: 10px;
+
+$searchbar-md-padding-bottom: 10px;
+
+$searchbar-wp-border-width: 0px;
+$searchbar-wp-input-border-radius: 2px;
+$searchbar-wp-padding-bottom: 10px;

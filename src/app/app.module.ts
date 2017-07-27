@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 /* bl - new pages created by bl */
 import { LandingPage } from '../pages/landing/landing';
 import { OptionsPage } from '../pages/options/options';
+import { HelpPage } from '../pages/help/help';
 import { DashboardPage } from '../pages/dashboard/dashboard'; // bl
 import { MenuPage } from '../pages/menu/menu';
 import { FindTeamPage } from '../pages/find-team/find-team';
@@ -28,6 +29,7 @@ import { MyTeamFilterPipe } from '../pipes/pipe.my-team-filter';
 import { FindTeamFilterPipe } from '../pipes/pipe.find-team-filter';
 import { FavoriteTeamsFilterPipe } from '../pipes/pipe.favorite-teams-filter';
 import { RecordFilterPipe } from '../pipes/pipe.record-filter';
+import { HelpFilterPipe } from '../pipes/pipe.help-filter';
 
 /* bl - new providers created by bl */
 import { GoogleSheetsProvider } from '../providers/google-sheets';
@@ -43,6 +45,7 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     /* bl - new pages created by bl */
     LandingPage,
     OptionsPage,
+    HelpPage,
     FindTeamPage,
     MenuPage,
     DashboardPage,
@@ -51,7 +54,8 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     MyTeamFilterPipe,
     FindTeamFilterPipe,
     FavoriteTeamsFilterPipe,
-    RecordFilterPipe
+    RecordFilterPipe,
+    HelpFilterPipe
     
 
   ],
@@ -73,6 +77,7 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     /* bl - new pages created by bl */
     LandingPage,
     OptionsPage,
+    HelpPage,
     FindTeamPage,
     MenuPage,
     DashboardPage

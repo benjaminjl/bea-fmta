@@ -104,9 +104,21 @@ $toggle-wp-track-border-color-on: #86AC41;
 
 $searchbar-ios-background-color: #324851;
 $searchbar-ios-padding-vertical: 10px;
+$searchbar-ios-padding-horizontal: 0px;
 
 $searchbar-md-padding-bottom: 10px;
+$searchbar-md-padding-start: 0px;
+$searchbar-md-padding-end: 0px;
 
 $searchbar-wp-border-width: 0px;
 $searchbar-wp-input-border-radius: 2px;
 $searchbar-wp-padding-bottom: 10px;
+$searchbar-wp-padding-start: 0px;
+$searchbar-wp-padding-end: 0px;
+
+$spinner-ios-dots-color: #FFFFFF;
+$spinner-md-dots-color: #FFFFFF;
+$spinner-wp-dots-color: #FFFFFF;
+
+$refresher-border-color: none;
+

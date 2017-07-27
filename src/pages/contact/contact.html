@@ -86,7 +86,18 @@ Last Update: 07/20/2017
 
 <ion-content [ngStyle]="{'background-color': activeTeamPrimaryColor}" padding>
 
-  <ion-list>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+
+    <ion-refresher-content 
+      pullingIcon="none"
+      refreshingSpinner="dots">
+    </ion-refresher-content>
+
+  </ion-refresher>
+
+  <div text-center *ngIf="!teamSchedule"><ion-spinner name="dots"></ion-spinner></div>
+
+  <ion-list *ngIf="teamSchedule">
 
     <ion-item *ngFor="let item of teamSchedule"> {{ item.scheduleOpponent }}</ion-item>
 

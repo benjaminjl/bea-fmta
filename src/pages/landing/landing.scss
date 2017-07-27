@@ -14,12 +14,12 @@ page-landing {
     text-align: right;
 }
 
-.checkmark{
+.add{
     color: #FFFFFF;
     background-color: #449E1E;
 }
 
-.close{
+.delete{
     color: #FFFFFF;
     background-color: #A51212;
 }
@@ -55,22 +55,22 @@ p{
     margin-top: 15px;
     color: #324851;
     display: inline-block;
+
+    padding-top: 14px;
+    padding-left: 15px;
 }
 
 .custom-toolbar .banner{
     height: 50px;
     font-weight: 500;
     font-size: 18px;
-
-    padding-top: 14px;
-    padding-left: 15px;
+    padding: 10px;
 }
 
 .custom-toolbar .landing-banner{
     font-weight: 500;
     font-size: 18px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 10px;
 }
 
 .spacer{

@@ -44,6 +44,7 @@ Last Update: 03/31/2017
   import { TabsPage } from '../tabs/tabs';                // Page that lays over the others pages that are accessed via the tabs shown within the app
   import { FindTeamPage } from '../find-team/find-team';  // Page that is shown via the modalCtrl that acts as a menu for finding teams
   import { OptionsPage } from '../options/options';       // Page that is shown via the modalCtrl that acts as a menu for certain app options
+  import { HelpPage } from '../help/help';       // Page that is shown via the modalCtrl that acts as a menu for certain app options
 
 
 
@@ -559,6 +560,26 @@ Last Update: 03/31/2017
   }
 
 
+
+
+
+/*********************************************************************
+Name: openHelpPage
+Purpose: Opens the Find Team Page
+Parameters: None
+Description: This function will open the Find Team page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  openHelpPage(){
+
+    let findTeamPageModal = this.modalCtrl.create(HelpPage);  // Declare the Modal
+    
+    findTeamPageModal.present();                                  // Present the Modal
+
+  }
 
 
 

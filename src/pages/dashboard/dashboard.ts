@@ -258,4 +258,59 @@ Last Update: 04/07/2017
 
   }
 
+
+
+
+
+/*********************************************************************
+Name: doRefresh
+Purpose: Run function after refresh is initiated
+Parameters: refresher
+Description: When the user drags down on the screen, the the page will
+  be refreshed.
+Note: None
+References:
+Last Update: 07/27/2017
+*********************************************************************/
+
+  doRefresh(refresher){
+
+// -- Get the Team Record
+    
+    this.googleSheets.loadTeams( this.spreadsheetId, 'Record', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamRecord = data;
+
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+// -- Get the Team Year
+    
+    this.googleSheets.loadTeams( this.spreadsheetId, 'Year', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamYear = data;
+
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+    refresher.complete();
+
+  }
+
 }

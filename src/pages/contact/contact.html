@@ -99,7 +99,46 @@ Last Update: 07/20/2017
 
   <ion-list *ngIf="teamSchedule">
 
-    <ion-item *ngFor="let item of teamSchedule"> {{ item.scheduleOpponent }}</ion-item>
+    <ion-item text-wrap *ngFor="let item of teamSchedule">
+
+      <ion-grid> 
+
+        <ion-row>
+
+          <ion-col class="col-left"><p>{{ item.scheduleDate }}</p></ion-col>
+          <ion-col class="col-right"><p>{{ item.scheduleTime }}</p></ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col class="col-left"> <h3>{{ item.scheduleOpponent }}</h3> </ion-col>
+          
+        </ion-row>
+
+        <ion-row margin-bottom>
+
+          <ion-col class="col-left"> <p>{{ item.scheduleLocation }} </p> </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col class="col-left"> <h3> - </h3> </ion-col>
+          <ion-col class="col-right"> <h3> {{ item.scheduleYourScore }} </h3> </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col class="col-left"> <h3> {{ item.scheduleOpponent }} </h3> </ion-col>
+          <ion-col class="col-right"> <h3> {{ item.scheduleTheirScore }} </h3> </ion-col>
+
+        </ion-row>
+
+        </ion-grid>
+
+      </ion-item>
 
   </ion-list>
 

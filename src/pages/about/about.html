@@ -102,7 +102,35 @@ Last Update: 07/20/2017
 
   <ion-list *ngIf="teamRoster">
 
-    <ion-item *ngFor="let item of teamRoster"> {{ item.rosterName }}</ion-item>
+    <ion-item *ngFor="let item of teamRoster"> 
+      
+
+      <ion-grid>
+
+        <ion-row margin-bottom>
+
+          <ion-col class="col-left"> <h2>{{ item.rosterName }}</h2> </ion-col>
+          <ion-col class="col-right"> <p># {{ item.rosterJerseyNumber }}</p> </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col class="col-left"> <h3> Year </h3> </ion-col>
+          <ion-col class="col-right"> <h3> {{ item.rosterGrade }} </h3> </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col class="col-left"> <h3> Postition </h3> </ion-col>
+          <ion-col class="col-right"> <h3> {{ item.rosterOffensivePosition }}/{{ item.rosterDefensivePosition }} </h3> </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-item>
 
   </ion-list>
 

@@ -1,11 +1,70 @@
-<ion-header>
+<!--*********************************************************************
+FILE INFO
+*************************************************************************
+Name: dashboard.html
+Purpose: The display file for the Dashboard Page
+Tags: ion-header, ion-navbar, ion-icon, ion-content
+Description: This is the page that will show if the user does not have
+  a default team selected and loading by default.
+Note: None
+Ng Commands: ngFor, click
+Filters: myTeamFilter, favoriteTeamsFilter
+Functions: openFindTeamPage, openOptionsPage, goToTeam, removeMyTeam,
+  removeFavoriteTeam, addMyTeam
+Last Update: 04/07/2017
+*************************************************************************-->
+
+
+
+<!--*********************************************************************
+Name: ion-header
+Purpose: Displays at top of page
+Tags: ion-navbar, ion-icon
+Description:
+Note: None
+Ng Commands: click
+Filters: None
+Functions: 
+Last Update: 07/20/2017
+*************************************************************************-->
+
+<ion-header no-padding no-border>
+
   <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
+    
+    <ion-grid>
+      
+      <ion-row>
+        
+        <ion-col class="col-right" (click)="goToLandingPage()">
+          
+          <ion-icon name="home"></ion-icon>
+        
+        </ion-col>
+      
+      </ion-row>
+    
+    </ion-grid>
+    
+
   </ion-navbar>
+
+  <!-- May want to take out of grid -->
+
+<ion-toolbar no-padding class="custom-toolbar">
+
+  <div  [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamPrimaryColor}" class="banner">Roster</div>
+  
+</ion-toolbar>
+  
 </ion-header>
 
-<ion-content padding>
+<ion-content [ngStyle]="{'background-color': activeTeamPrimaryColor}" padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let item of teamRoster"> {{ item.rosterName }}</ion-item>
+
+  </ion-list>
 
 </ion-content>

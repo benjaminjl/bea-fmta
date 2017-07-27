@@ -80,7 +80,6 @@ export class DashboardPage {
 // -- Dynamic variables
 
   availableTeams: Array<any>;
-  teamLinks: Array<any>;
   teamRecord: Array<any>;
   teamYear: Array<any>;
 
@@ -168,24 +167,6 @@ ionViewDidLoad(){
 
   this.spreadsheetId = this.activeTeam.teamSpreadsheetId;
   this.apiKey = this.activeTeam.teamApiKey;
-
-
-// -- Get the Team Links
-    
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Links', this.apiKey )
-      
-      .then( ( data ) => {
-
-        this.teamLinks = data;
-
-      }, (error) => {
-
-
-// -- If this executes, then an error has occurred
-
-        console.log( error );
-
-      });
 
 
 // -- Get the Team Record

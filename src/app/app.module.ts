@@ -19,6 +19,8 @@ import { HelpPage } from '../pages/help/help';
 import { DashboardPage } from '../pages/dashboard/dashboard'; // bl
 import { MenuPage } from '../pages/menu/menu';
 import { FindTeamPage } from '../pages/find-team/find-team';
+import { SearchRosterPage } from '../pages/search-roster/search-roster';
+import { SearchSchedulePage } from '../pages/search-schedule/search-schedule';
 
 /* bl - new imports created by bl */
 import { IonicStorageModule } from '@ionic/storage';
@@ -30,6 +32,8 @@ import { FindTeamFilterPipe } from '../pipes/pipe.find-team-filter';
 import { FavoriteTeamsFilterPipe } from '../pipes/pipe.favorite-teams-filter';
 import { RecordFilterPipe } from '../pipes/pipe.record-filter';
 import { HelpFilterPipe } from '../pipes/pipe.help-filter';
+import { SearchRosterFilterPipe } from '../pipes/pipe.search-roster-filter';
+import { SearchScheduleFilterPipe } from '../pipes/pipe.search-schedule-filter';
 
 /* bl - new providers created by bl */
 import { GoogleSheetsProvider } from '../providers/google-sheets';
@@ -49,13 +53,17 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     FindTeamPage,
     MenuPage,
     DashboardPage,
+    SearchRosterPage,
+    SearchSchedulePage,
 
     /* bl - new custom pipes created by bl */
     MyTeamFilterPipe,
     FindTeamFilterPipe,
     FavoriteTeamsFilterPipe,
     RecordFilterPipe,
-    HelpFilterPipe
+    HelpFilterPipe,
+    SearchRosterFilterPipe,
+    SearchScheduleFilterPipe
     
 
   ],
@@ -80,7 +88,9 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     HelpPage,
     FindTeamPage,
     MenuPage,
-    DashboardPage
+    DashboardPage,
+    SearchRosterPage,
+    SearchSchedulePage
 
   ],
   providers: [

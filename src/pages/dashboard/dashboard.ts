@@ -300,6 +300,8 @@ Last Update: 07/27/2017
 
         this.teamYear = data;
 
+        refresher.complete();
+
       }, (error) => {
 
 
@@ -308,8 +310,6 @@ Last Update: 07/27/2017
         console.log( error );
 
       });
-
-    refresher.complete();
 
   }
 

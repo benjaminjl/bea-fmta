@@ -29,6 +29,7 @@ Last Update: 07/16/17
     
     NavController,    // Controller used to create navCtrl which is used for changing pages/views
     ViewController, // Controller used to create viewCtrl which is used for closing the Menu modal
+    ModalController,  // Controller used to create the modalCtrl which is used for showing the menus
     App               // Controller used to create app which is used for setting the page/view roots
     
   } from 'ionic-angular';
@@ -39,6 +40,7 @@ Last Update: 07/16/17
   import { InAppBrowser } from '@ionic-native/in-app-browser';  // Controller that creates inAppBrowser which is used to open the Team Links in the user's default browswer
 
   import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
+  import { SearchRosterPage } from '../search-roster/search-roster'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
 
 
 
@@ -114,6 +116,7 @@ Last Update: 07/20/2017
     public globalVars: GlobalVarsProvider,      // Used for calling functions from GlobalVarsProvider
     public viewCtrl: ViewController,            // Used for closing the Menu modal
     public inAppBrowser: InAppBrowser,          // Used for opening the Team Links in the user's default browser
+    public modalCtrl: ModalController,          // Used for opening pages that act as menus
     public app: App                             // Used for setting page/view roots
 
 
@@ -172,6 +175,27 @@ ionViewDidLoad(){
 
 
 
+/*********************************************************************
+Name: openFindTeamPage
+Purpose: Opens the Find Team Page
+Parameters: None
+Description: This function will open the Find Team page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  openSearchRosterPage(){
+
+    let findTeamPageModal = this.modalCtrl.create(SearchRosterPage);  // Declare the Modal
+    
+    findTeamPageModal.present();                                  // Present the Modal
+
+  }
+
+
+
+
 
 /*********************************************************************
 Name: goToLandingPage
@@ -219,6 +243,8 @@ Last Update: 07/27/2017
 
         this.teamRoster = data;
 
+        refresher.complete();
+
       }, (error) => {
 
 
@@ -227,8 +253,6 @@ Last Update: 07/27/2017
         console.log( error );
 
       });
-
-    refresher.complete();
 
   }
 

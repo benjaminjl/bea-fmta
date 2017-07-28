@@ -36,9 +36,15 @@ Last Update: 07/20/2017
       
       <ion-row>
         
-        <ion-col class="col-right" (click)="goToLandingPage()">
+        <ion-col class="col-left" (click)="goToLandingPage()">
           
           <ion-icon name="home"></ion-icon>
+        
+        </ion-col>
+
+        <ion-col class="col-right" (click)="openSearchRosterPage()">
+          
+          <ion-icon name="search"></ion-icon>
         
         </ion-col>
       
@@ -105,26 +111,19 @@ Last Update: 07/20/2017
     <ion-item *ngFor="let item of teamRoster"> 
       
 
-      <ion-grid>
-
-        <ion-row margin-bottom>
-
-          <ion-col class="col-left"> <h2>{{ item.rosterName }}</h2> </ion-col>
-          <ion-col class="col-right"> <p># {{ item.rosterJerseyNumber }}</p> </ion-col>
-
-        </ion-row>
+      <ion-grid no-padding>
 
         <ion-row>
 
-          <ion-col class="col-left"> <h3> Year </h3> </ion-col>
-          <ion-col class="col-right"> <h3> {{ item.rosterGrade }} </h3> </ion-col>
+          <ion-col class="col-left"> <h2>{{ item.rosterName }}</h2>  </ion-col>
+          <ion-col class="col-right"> <p>{{ item.rosterNumber }}</p> </ion-col>
 
         </ion-row>
 
-        <ion-row>
+        <ion-row no-padding>
 
-          <ion-col class="col-left"> <h3> Postition </h3> </ion-col>
-          <ion-col class="col-right"> <h3> {{ item.rosterOffensivePosition }}/{{ item.rosterDefensivePosition }} </h3> </ion-col>
+          <ion-col class="col-left"> <p> {{ item.rosterGrade }} </p> </ion-col>
+          <ion-col class="col-right"> <p> {{ item.rosterPosition }} </p> </ion-col>
 
         </ion-row>
 

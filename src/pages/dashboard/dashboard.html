@@ -36,7 +36,7 @@ Last Update: 07/20/2017
       
       <ion-row>
         
-        <ion-col class="col-right" (click)="goToLandingPage()">
+        <ion-col class="col-left" (click)="goToLandingPage()">
           
           <ion-icon name="home"></ion-icon>
         
@@ -102,10 +102,7 @@ Last Update: 07/20/2017
 
    <ion-refresher (ionRefresh)="doRefresh($event)">
 
-    <ion-refresher-content 
-      pullingIcon="none"
-      refreshingSpinner="dots">
-    </ion-refresher-content>
+    <ion-refresher-content pullingIcon="none" refreshingSpinner="dots"></ion-refresher-content>
 
    </ion-refresher>
 
@@ -142,14 +139,6 @@ Last Update: 07/20/2017
     </ion-row>
 
     <ion-row *ngFor="let item of (teamRecord | recordFilter: 'overall')">
-
-      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right style="font-weight: 500"> {{ item.recordTypeOfRecord }} </ion-col>
-      
-      <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-right" text-left style="font-weight: 300"> {{ item.recordWinPercentage }} </ion-col>
-      
-    </ion-row>
-    
-		<ion-row *ngFor="let item of (teamRecord | recordFilter: 'conference')">
 
       <ion-col [ngStyle]="{'border-color': activeTeamSecondaryColor, 'color': activeTeamComplementColor}" class="record-col-left" text-right style="font-weight: 500"> {{ item.recordTypeOfRecord }} </ion-col>
       

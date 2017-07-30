@@ -42,4 +42,16 @@ export class GlobalVarsProvider {
     return this._myTeamIsSet;
   }
 
+// -- Favorites
+
+  _hasFavorites: boolean;
+
+  setHasFavorites(passed_Boolean: boolean){
+    this._hasFavorites = passed_Boolean;
+  }
+
+  getHasFavorites(){
+    return this._hasFavorites;
+  }
+
 }

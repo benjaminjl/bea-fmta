@@ -120,7 +120,6 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
        that is within the spreadsheet */
     var columnsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values/' + sheetId + columnsRange + '?majorDimension=ROWS&key=' + apiKey;
 
-
     return new Promise(resolve => {
 
         this.http.get(columnsUrl)
@@ -182,7 +181,8 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
                                 if (key === dataArray[i].teamId){ /* bl - PC: Does local storage key = id of team? */
 
                                     dataArray[i].isFavoriteTeam = 'true'; /* bl - PC: IF YES, then it is a favorite <- */
-
+                                    
+                                    this.globalVars.setHasFavorites(true);
                                 }
                                 
                                 /* bl - next test for my team (default team) */

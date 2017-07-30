@@ -24,14 +24,11 @@ page-landing {
     background-color: #A51212;
 }
 
-.even ion-item{
-    border-left: 5px solid #7DA3A1;
-}
-.odd ion-item{
+.favorite-team{
     border-left: 5px solid #7DA3A1;
 }
 
-.favorite-team{
+.my-team{
     border-left: 5px solid #86AC41;
 }
 
@@ -128,5 +125,6 @@ ion-icon{
     text-align: center;
     font-size: 16px;
     margin: 0px;
+    padding: 0px;
 }
 

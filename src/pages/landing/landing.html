@@ -139,7 +139,7 @@ Last Update: 03/31/2017
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | myTeamFilter: 'true'">
       
-      <ion-item class= "favorite-team" (click)="goToTeam(item)">
+      <ion-item class= "my-team" (click)="goToTeam(item)">
 
         {{ item.teamName }}
       
@@ -157,6 +157,12 @@ Last Update: 03/31/2017
     
     </ion-item-sliding>
 
+    <ion-item class= "my-team" *ngIf="showMessageHowToAddMyTeam">
+      
+      Choose a Favorite...
+
+    </ion-item>
+
   </ion-list>
 
 
@@ -169,13 +175,9 @@ Last Update: 03/31/2017
 
   <ion-list>
 
-    <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true';
-                                           let isOdd=odd;
-                                           let isEven=even;"
-                                           [class.odd]="isOdd" 
-                                           [class.even]="isEven">
+    <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true'">
       
-      <ion-item (click)="goToTeam(item)">
+      <ion-item class="favorite-team" (click)="goToTeam(item)">
         
         {{ item.teamName }}
       
@@ -203,6 +205,12 @@ Last Update: 03/31/2017
       </ion-item-options>
     
     </ion-item-sliding>
+
+    <ion-item class="favorite-team" *ngIf="showMessageHowToAddFavorites" (click)="openFindTeamPage()">
+        
+        Find a Team...
+      
+     </ion-item>
 
   </ion-list>
 

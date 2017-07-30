@@ -8,6 +8,8 @@ import { GlobalVarsProvider } from '../../providers/global-vars';
 /* bl - new imports created by bl */
 import { Storage } from '@ionic/storage';
 
+import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
+
 @Component({
   selector: 'page-find-team',
   templateUrl: 'find-team.html'
@@ -26,7 +28,7 @@ export class FindTeamPage {
     public app: App,
     public viewCtrl: ViewController,
     public storage: Storage,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
 
     ) {}
 
@@ -70,6 +72,8 @@ ionViewDidLoad(){
           if (teamId === this.availableTeams[i].teamId){ /* bl - PC: Does the selected teamId = id of team? */
 
             this.availableTeams[i].isFavoriteTeam = 'true'; /* bl - PC: IF YES, then add it as a favorite <- */
+
+            this.globalVars.setHasFavorites(true);
             
             let alert = this.alertCtrl.create({
               title: 'Favorite Added',
@@ -112,9 +116,11 @@ ionViewDidLoad(){
   }
 
   closeMenu() {
-  this.viewCtrl.dismiss();
-}
+  
+    this.viewCtrl.dismiss();
 
+    this.app.getRootNav().setRoot(LandingPage);
 
+  }
 
 }

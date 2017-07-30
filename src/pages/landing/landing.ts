@@ -86,7 +86,8 @@ export class LandingPage {
 // -- Dynamic variables
 
   availableTeams: Array<any> = [];  // The array of available teams set through a call to the GlobalVarsProvider
-
+  showMessageHowToAddMyTeam: boolean;
+  showMessageHowToAddFavorites: boolean;
 
 
 /*********************************************************************
@@ -134,6 +135,12 @@ Last Update: 04/07/2017
   ionViewDidLoad() {
 
     this.availableTeams = this.globalVars.getAvailableTeams();  // Set the availableTeams variable
+
+    if (this.globalVars.getMyTeamIsSet() !== true){
+
+      this.showMessageHowToAddMyTeam = true;
+
+    }
 
   }
 
@@ -199,6 +206,12 @@ Last Update: 03/31/2017
                   if (teamId === this.availableTeams[i].teamId){
                     
                     delete this.availableTeams[i].isFavoriteTeam;
+                    
+                  }
+                
+                  if (this.availableTeams[i].isFavoriteTeam == 'true'){
+                    
+                    this.globalVars.setHasFavorites(true);
                     
                   }
 
@@ -270,6 +283,8 @@ Last Update: 04/07/2017
             this.availableTeams[i].isMyTeam = 'true';
 
             this.globalVars.setMyTeamIsSet(true);
+
+            this.showMessageHowToAddMyTeam = false;
 
             let alert = this.alertCtrl.create({
 
@@ -485,6 +500,8 @@ Last Update: 03/31/2017
                       if (teamId === this.availableTeams[i].teamId){
                     
                         delete this.availableTeams[i].isMyTeam;
+                        
+                        this.showMessageHowToAddMyTeam = true;
 
                       }
                     }
@@ -599,6 +616,30 @@ Last Update: 03/31/2017
       
     optionsPageModal.present();                                 // Present Modal
     
+  }
+
+
+
+
+
+/*********************************************************************
+Name: openOptionsPage
+Purpose: Opens the Options Page
+Parameters: None
+Description: This function will open the Options page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+  
+  ionViewDidEnter(){
+
+    if (this.globalVars.getHasFavorites() !== true){
+
+      this.showMessageHowToAddFavorites = true;
+
+    }
+  
   }
 
 }

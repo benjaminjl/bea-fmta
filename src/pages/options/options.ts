@@ -8,6 +8,8 @@ import { GlobalVarsProvider } from '../../providers/global-vars';
 /* bl - new imports created by bl */
 import { Storage } from '@ionic/storage';
 
+import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
+
 @Component({
   selector: 'page-options',
   templateUrl: 'options.html'
@@ -73,14 +75,18 @@ ionViewDidLoad(){
 }
 
 closeMenu() {
+
   this.viewCtrl.dismiss();
+
+  this.app.getRootNav().setRoot(LandingPage);
+
 }
 
 clearAppData(){
 
   let alert = this.alertCtrl.create({
       title: 'Clear App Data',
-      message: "Clear all of data including Favorites?",
+      message: "Clear data including Favorites?",
       buttons: [
         {
           text: 'Cancel',
@@ -100,6 +106,7 @@ clearAppData(){
             this.loadMyTeamByDefault = false;
             this.globalVars.setMyTeamIsSet(false);
             this.loadMyTeamByDefaultToggleIsDisabled = true;
+            this.globalVars.setHasFavorites(false);
 
             // -- Clear All Custom Attributes from the Team Objects
 

@@ -9,10 +9,10 @@ import { GlobalVarsProvider } from '../../providers/global-vars';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'page-search-schedule',
-  templateUrl: 'search-schedule.html'
+  selector: 'page-search-team-schedule',
+  templateUrl: 'search-team-schedule.html'
 })
-export class SearchSchedulePage {
+export class SearchTeamSchedulePage {
 
   /* bl - from what I have seen and watched thus far, not
   much seems to go into the constructor curly braces */
@@ -70,7 +70,7 @@ ionViewDidLoad(){
 
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Schedule', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Schedule', this.apiKey )
       
       .then( ( data ) => {
 

@@ -1,8 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+
 
 import { BrowserModule } from '@angular/platform-browser'; // NEW 07262017
 import { HttpModule } from '@angular/http';
@@ -16,11 +15,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LandingPage } from '../pages/landing/landing';
 import { OptionsPage } from '../pages/options/options';
 import { HelpPage } from '../pages/help/help';
-import { DashboardPage } from '../pages/dashboard/dashboard'; // bl
-import { MenuPage } from '../pages/menu/menu';
+import { TeamInfoPage } from '../pages/team-info/team-info'; // bl
+import { TeamRosterPage } from '../pages/team-roster/team-roster';
+import { TeamSchedulePage } from '../pages/team-schedule/team-schedule';
 import { FindTeamPage } from '../pages/find-team/find-team';
-import { SearchRosterPage } from '../pages/search-roster/search-roster';
-import { SearchSchedulePage } from '../pages/search-schedule/search-schedule';
+import { SearchTeamRosterPage } from '../pages/search-team-roster/search-team-roster';
+import { SearchTeamSchedulePage } from '../pages/search-team-schedule/search-team-schedule';
 
 /* bl - new imports created by bl */
 import { IonicStorageModule } from '@ionic/storage';
@@ -42,8 +42,8 @@ import { GlobalVarsProvider } from '../providers/global-vars';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    TeamRosterPage,
+    TeamSchedulePage,
     TabsPage,
 
     /* bl - new pages created by bl */
@@ -51,10 +51,9 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     OptionsPage,
     HelpPage,
     FindTeamPage,
-    MenuPage,
-    DashboardPage,
-    SearchRosterPage,
-    SearchSchedulePage,
+    TeamInfoPage,
+    SearchTeamRosterPage,
+    SearchTeamSchedulePage,
 
     /* bl - new custom pipes created by bl */
     MyTeamFilterPipe,
@@ -78,8 +77,8 @@ import { GlobalVarsProvider } from '../providers/global-vars';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    TeamRosterPage,
+    TeamSchedulePage,
     TabsPage,
 
     /* bl - new pages created by bl */
@@ -87,10 +86,9 @@ import { GlobalVarsProvider } from '../providers/global-vars';
     OptionsPage,
     HelpPage,
     FindTeamPage,
-    MenuPage,
-    DashboardPage,
-    SearchRosterPage,
-    SearchSchedulePage
+    TeamInfoPage,
+    SearchTeamRosterPage,
+    SearchTeamSchedulePage
 
   ],
   providers: [

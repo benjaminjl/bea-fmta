@@ -1,8 +1,8 @@
 <!--*********************************************************************
 FILE INFO
 *************************************************************************
-Name: dashboard.html
-Purpose: The display file for the Dashboard Page
+Name: team-schedule.html
+Purpose: The display file for the Team Schedule Page
 Tags: ion-header, ion-navbar, ion-icon, ion-content
 Description: This is the page that will show if the user does not have
   a default team selected and loading by default.
@@ -42,7 +42,7 @@ Last Update: 07/20/2017
         
         </ion-col>
 
-        <ion-col class="col-right" (click)="openSearchRosterPage()">
+        <ion-col class="col-right" (click)="openSearchTeamSchedulePage()">
           
           <ion-icon name="search"></ion-icon>
         
@@ -71,7 +71,7 @@ Last Update: 07/20/2017
   
           <ion-row>
     
-            <ion-col [ngStyle]="{'color': activeTeamPrimaryColor}"> Roster </ion-col>
+            <ion-col [ngStyle]="{'color': activeTeamPrimaryColor}"> Schedule </ion-col>
   
           </ion-row>
 
@@ -101,35 +101,51 @@ Last Update: 07/20/2017
 
   </ion-refresher>
 
+  <div text-center *ngIf="!teamSchedule"><ion-spinner name="dots"></ion-spinner></div>
 
-  <div text-center *ngIf="!teamRoster"><ion-spinner name="dots"></ion-spinner></div>
+  <ion-list *ngIf="teamSchedule">
 
+    <ion-item text-wrap *ngFor="let item of teamSchedule">
 
-
-  <ion-list *ngIf="teamRoster">
-
-    <ion-item *ngFor="let item of teamRoster"> 
-      
-
-      <ion-grid no-padding>
+      <ion-grid no-padding> 
 
         <ion-row>
 
-          <ion-col class="col-left"> <h2>{{ item.rosterName }}</h2>  </ion-col>
-          <ion-col class="col-right"> <p>{{ item.rosterNumber }}</p> </ion-col>
+          <ion-col col-14 class="col-left">
+            
+            <h2 style="padding-left: 1.48em; text-indent: -1.48em;" *ngIf="item.scheduleHomeOrAway=='Home'">vs. {{ item.scheduleOpponent }}<br><p>{{ item.scheduleLocation }}</p></h2>
+            <h2 style="padding-left: 1.1em; text-indent: -1.1em;" *ngIf="item.scheduleHomeOrAway=='Away'">at {{ item.scheduleOpponent }}<br><p>{{ item.scheduleLocation }}</p></h2>
+
+          </ion-col>
+
+          <ion-col class="col-right"><p>{{ item.scheduleDate }}<br>{{ item.scheduleTime }}</p></ion-col>
+          
+        </ion-row>
+
+        <ion-row>
+          
+           
 
         </ion-row>
 
-        <ion-row no-padding>
+        <ion-row *ngIf="item.scheduleResult!=null" padding-top>
 
-          <ion-col class="col-left"> <p> {{ item.rosterGrade }} </p> </ion-col>
-          <ion-col class="col-right"> <p> {{ item.rosterPosition }} </p> </ion-col>
+          <ion-col class="col-left" *ngIf="item.scheduleResult=='W'"> <h3 style="font-weight: 500;">{{ item.scheduleResult }}</h3> </ion-col>
+          <ion-col class="col-left" *ngIf="item.scheduleResult=='L'"> <h3>{{ item.scheduleResult }}</h3> </ion-col>
+          <ion-col class="col-right"> <p> <ion-icon icon-right name="md-arrow-dropright" *ngIf="item.scheduleResult=='W'"></ion-icon> {{ item.scheduleYourScore }} </p> </ion-col>
 
         </ion-row>
 
-      </ion-grid>
+        <ion-row *ngIf="item.scheduleResult!=null">
 
-    </ion-item>
+          <ion-col col-16 class="col-left"> <p> {{ item.scheduleOpponent }} </p> </ion-col>
+          <ion-col class="col-right"> <p>  <ion-icon name="md-arrow-dropright" *ngIf="item.scheduleResult=='L'"></ion-icon> {{ item.scheduleTheirScore }} </p> </ion-col>
+
+        </ion-row>
+
+        </ion-grid>
+
+      </ion-item>
 
   </ion-list>
 

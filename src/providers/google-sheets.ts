@@ -196,6 +196,7 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
                                             dataArray[j].isMyTeam = 'true'; /* bl - PC: IF YES, then it is myTeam <- */
                                             
                                             this.globalVars.setMyTeamIsSet(true);
+                                            
                                         }
 
                                         else{

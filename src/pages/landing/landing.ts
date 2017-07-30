@@ -136,15 +136,36 @@ Last Update: 04/07/2017
 
     this.availableTeams = this.globalVars.getAvailableTeams();  // Set the availableTeams variable
 
+  }
+
+
+
+
+
+/*********************************************************************
+Name: ionViewDidEnter
+Purpose: 
+Parameters: None
+Description: 
+References: 
+Last Update: 07/30/2017
+*********************************************************************/
+  
+  ionViewDidEnter(){
+
     if (this.globalVars.getMyTeamIsSet() !== true){
 
       this.showMessageHowToAddMyTeam = true;
 
     }
 
+    if (this.globalVars.getHasFavorites() !== true){
+
+      this.showMessageHowToAddFavorites = true;
+
+    }
+  
   }
-
-
 
 
 
@@ -534,13 +555,13 @@ Last Update: 03/31/2017
 
 /*********************************************************************
 Name: goToTeam
-Purpose: Open up the Dashboard with the chosen team's info.
+Purpose: Open up the Team Info Page with the chosen team's info.
 Parameters: passed_Team
 Description: The user selects a team from either their favorites or
   their default team and the team object is passed to this function.
   It then sets the global variable for the active team and then
   changes the navigation root to the Tabs Page which loads the 
-  dashboard page by default.
+  team info page by default.
 Note: 
 Reference: https://forum.ionicframework.com/t/cant-access-rootnav-after-upgrade-to-beta-11/59889
 Last Update: 03/31/2017
@@ -616,30 +637,6 @@ Last Update: 03/31/2017
       
     optionsPageModal.present();                                 // Present Modal
     
-  }
-
-
-
-
-
-/*********************************************************************
-Name: openOptionsPage
-Purpose: Opens the Options Page
-Parameters: None
-Description: This function will open the Options page for the user.
-Note: This is a modal page that displays over the other pages.
-References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
-Last Update: 03/31/2017
-*********************************************************************/
-  
-  ionViewDidEnter(){
-
-    if (this.globalVars.getHasFavorites() !== true){
-
-      this.showMessageHowToAddFavorites = true;
-
-    }
-  
   }
 
 }

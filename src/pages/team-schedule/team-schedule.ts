@@ -1,11 +1,11 @@
 /*********************************************************************
 FILE INFO
 **********************************************************************
-Name: dashboard.ts
-Purpose: Communicates with dashboard.html
+Name: team-schedule.ts
+Purpose: Communicates with team-schedule.html
 Parameters: None
-Description: The variables and functions used for the Dashboard Page
-Note: The Dashboard Page is one of the potential pages that the user will 
+Description: The variables and functions used for the Team Schedule Page
+Note: The Team Schedule Page is one of the potential pages that the user will 
   see when they first open the app.
 Last Update: 07/16/17
 *********************************************************************/
@@ -40,7 +40,9 @@ Last Update: 07/16/17
   import { InAppBrowser } from '@ionic-native/in-app-browser';  // Controller that creates inAppBrowser which is used to open the Team Links in the user's default browswer
 
   import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
-  import { SearchRosterPage } from '../search-roster/search-roster'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
+  import { SearchTeamSchedulePage } from '../search-team-schedule/search-team-schedule'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
+
+
 
 
 
@@ -57,8 +59,8 @@ Last Update: 07/20/2017
 
 @Component({
   
-  selector: 'page-about',   // Exact functionality unknown
-  templateUrl: 'about.html' // Refers to the html page that this TypeScript file communicates with
+  selector: 'page-team-schedule',   // Exact functionality unknown
+  templateUrl: 'team-schedule.html' // Refers to the html page that this TypeScript file communicates with
   
 })
 
@@ -67,7 +69,7 @@ Last Update: 07/20/2017
 
 
 /*********************************************************************
-Name: export class DashboardPage
+Name: export class TeamSchedulePage
 Purpose: Exact functionality unknown
 Parameters:
 Description: This is where the constructor, functions, and variables
@@ -77,13 +79,13 @@ Note: Ionic provides this by default and it is needed for any page
 Last Update: 07/20/2017
 *********************************************************************/
 
-export class AboutPage {
+export class TeamSchedulePage {
 
 // -- Dynamic variables
 
   availableTeams: Array<any>;
   
-  teamRoster: Array<any>;
+  teamSchedule: Array<any>;
 
   spreadsheetId: string;
   apiKey: string;
@@ -156,11 +158,11 @@ ionViewDidLoad(){
 
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Roster', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Schedule', this.apiKey )
       
       .then( ( data ) => {
 
-        this.teamRoster = data;
+        this.teamSchedule = data;
 
       }, (error) => {
 
@@ -175,6 +177,7 @@ ionViewDidLoad(){
 
 
 
+
 /*********************************************************************
 Name: openFindTeamPage
 Purpose: Opens the Find Team Page
@@ -185,14 +188,13 @@ References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pag
 Last Update: 03/31/2017
 *********************************************************************/
 
-  openSearchRosterPage(){
+  openSearchTeamSchedulePage(){
 
-    let findTeamPageModal = this.modalCtrl.create(SearchRosterPage);  // Declare the Modal
+    let findTeamPageModal = this.modalCtrl.create(SearchTeamSchedulePage);  // Declare the Modal
     
     findTeamPageModal.present();                                  // Present the Modal
 
   }
-
 
 
 
@@ -237,11 +239,11 @@ Last Update: 07/27/2017
 
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Roster', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Schedule', this.apiKey )
       
       .then( ( data ) => {
 
-        this.teamRoster = data;
+        this.teamSchedule = data;
 
         refresher.complete();
 

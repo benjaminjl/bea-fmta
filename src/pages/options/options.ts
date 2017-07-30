@@ -47,6 +47,7 @@ loadMyTeamByDefaultToggleIsDisabled: boolean;
 // -- When page loads function
 
 ionViewDidLoad(){
+  
 // -- Get Available Teams from GlobalVarsProvider
 // -- Available Teams is controlled on the Landing Page
   this.availableTeams = this.globalVars.getAvailableTeams();

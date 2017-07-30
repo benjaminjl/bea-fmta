@@ -54,7 +54,7 @@ ionViewDidLoad(){
   
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Help', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Help', this.apiKey )
       
       .then( ( data ) => {
 

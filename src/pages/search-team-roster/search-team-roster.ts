@@ -9,10 +9,10 @@ import { GlobalVarsProvider } from '../../providers/global-vars';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'page-search-roster',
-  templateUrl: 'search-roster.html'
+  selector: 'page-search-team--roster',
+  templateUrl: 'search-team-roster.html'
 })
-export class SearchRosterPage {
+export class SearchTeamRosterPage {
 
 //-- Variables
 
@@ -71,7 +71,7 @@ ionViewDidLoad(){
 
 // -- Get the Team Record
     
-  this.googleSheets.loadTeams( this.spreadsheetId, 'Roster', this.apiKey )
+  this.googleSheets.load( this.spreadsheetId, 'Roster', this.apiKey )
     
     .then( ( data ) => {
 

@@ -1,11 +1,11 @@
 /*********************************************************************
 FILE INFO
 **********************************************************************
-Name: dashboard.ts
-Purpose: Communicates with dashboard.html
+Name: team-info.ts
+Purpose: Communicates with team-info.html
 Parameters: None
-Description: The variables and functions used for the Dashboard Page
-Note: The Dashboard Page is one of the potential pages that the user will 
+Description: The variables and functions used for the Team Info Page
+Note: The Team Info Page is one of the potential pages that the user will 
   see when they first open the app.
 Last Update: 07/16/17
 *********************************************************************/
@@ -29,7 +29,6 @@ Last Update: 07/16/17
     
     NavController,    // Controller used to create navCtrl which is used for changing pages/views
     ViewController, // Controller used to create viewCtrl which is used for closing the Menu modal
-    ModalController,  // Controller used to create the modalCtrl which is used for showing the menus
     App               // Controller used to create app which is used for setting the page/view roots
     
   } from 'ionic-angular';
@@ -40,9 +39,6 @@ Last Update: 07/16/17
   import { InAppBrowser } from '@ionic-native/in-app-browser';  // Controller that creates inAppBrowser which is used to open the Team Links in the user's default browswer
 
   import { LandingPage } from '../landing/landing'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
-  import { SearchSchedulePage } from '../search-schedule/search-schedule'; // Page that goes to the Landing Page when the user clicks on the link within the Menu
-
-
 
 
 
@@ -59,8 +55,8 @@ Last Update: 07/20/2017
 
 @Component({
   
-  selector: 'page-contact',   // Exact functionality unknown
-  templateUrl: 'contact.html' // Refers to the html page that this TypeScript file communicates with
+  selector: 'page-team-info',   // Exact functionality unknown
+  templateUrl: 'team-info.html' // Refers to the html page that this TypeScript file communicates with
   
 })
 
@@ -69,7 +65,7 @@ Last Update: 07/20/2017
 
 
 /*********************************************************************
-Name: export class DashboardPage
+Name: export class TeamInfoPage
 Purpose: Exact functionality unknown
 Parameters:
 Description: This is where the constructor, functions, and variables
@@ -79,13 +75,13 @@ Note: Ionic provides this by default and it is needed for any page
 Last Update: 07/20/2017
 *********************************************************************/
 
-export class ContactPage {
+export class TeamInfoPage {
 
 // -- Dynamic variables
 
   availableTeams: Array<any>;
-  
-  teamSchedule: Array<any>;
+  teamRecord: Array<any>;
+  teamYear: Array<any>;
 
   spreadsheetId: string;
   apiKey: string;
@@ -118,7 +114,6 @@ Last Update: 07/20/2017
     public globalVars: GlobalVarsProvider,      // Used for calling functions from GlobalVarsProvider
     public viewCtrl: ViewController,            // Used for closing the Menu modal
     public inAppBrowser: InAppBrowser,          // Used for opening the Team Links in the user's default browser
-    public modalCtrl: ModalController,          // Used for opening pages that act as menus
     public app: App                             // Used for setting page/view roots
 
 
@@ -145,6 +140,30 @@ ionViewDidLoad(){
   this.activeTeam = this.globalVars.getActiveTeam();
 
   this.activeTeamName = this.activeTeam.teamName;
+  this.activeTeamType = this.activeTeam.teamType;
+
+  switch (this.activeTeamType) {
+    case "Football":
+        this.activeTeamIcon = "md-american-football";
+        break;
+    case "Soccer":
+        this.activeTeamIcon = "md-football";
+        break;
+    case "Cross Country":
+        this.activeTeamIcon = "md-walk";
+        break;
+    case "Basketball":
+        this.activeTeamIcon = "md-basketball";
+        break;
+    case "Baseball":
+        this.activeTeamIcon = "md-baseball";
+        break;
+    case "Track":
+        this.activeTeamIcon = "md-walk";
+        break;
+    default:
+        this.activeTeamIcon = "md-medal";
+    } 
 
   this.activeTeamPrimaryColor = this.activeTeam.teamPrimaryColor;
   this.activeTeamSecondaryColor = this.activeTeam.teamSecondaryColor;
@@ -158,11 +177,28 @@ ionViewDidLoad(){
 
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Schedule', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Record', this.apiKey )
       
       .then( ( data ) => {
 
-        this.teamSchedule = data;
+        this.teamRecord = data;
+
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+// -- Get the Team Year
+    
+    this.googleSheets.load( this.spreadsheetId, 'Year', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamYear = data;
 
       }, (error) => {
 
@@ -174,27 +210,6 @@ ionViewDidLoad(){
       });
 }
 
-
-
-
-
-/*********************************************************************
-Name: openFindTeamPage
-Purpose: Opens the Find Team Page
-Parameters: None
-Description: This function will open the Find Team page for the user.
-Note: This is a modal page that displays over the other pages.
-References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
-Last Update: 03/31/2017
-*********************************************************************/
-
-  openSearchSchedulePage(){
-
-    let findTeamPageModal = this.modalCtrl.create(SearchSchedulePage);  // Declare the Modal
-    
-    findTeamPageModal.present();                                  // Present the Modal
-
-  }
 
 
 
@@ -225,6 +240,29 @@ Last Update: 04/07/2017
 
 
 /*********************************************************************
+Name: openTeamLink
+Purpose: Open the Team Link that the user selects
+Parameters: passed_TeamLink
+Description: When the user presses a Team Link within the Menu the
+  TeamLink object is passed to this function and then used to open
+  the link via the inAppBrowser controller which opens the link
+  within the user's default browser.
+Note: None
+References: https://github.com/driftyco/ionic-conference-app/
+Last Update: 04/07/2017
+*********************************************************************/
+
+  openTeamLink(passed_Team: any) {
+
+      this.inAppBrowser.create(passed_Team.linkWebsiteLink, '_blank');  // Open the Team Link within the user's default browser
+
+  }
+
+
+
+
+
+/*********************************************************************
 Name: doRefresh
 Purpose: Run function after refresh is initiated
 Parameters: refresher
@@ -239,11 +277,28 @@ Last Update: 07/27/2017
 
 // -- Get the Team Record
     
-    this.googleSheets.loadTeams( this.spreadsheetId, 'Schedule', this.apiKey )
+    this.googleSheets.load( this.spreadsheetId, 'Record', this.apiKey )
       
       .then( ( data ) => {
 
-        this.teamSchedule = data;
+        this.teamRecord = data;
+
+      }, (error) => {
+
+
+// -- If this executes, then an error has occurred
+
+        console.log( error );
+
+      });
+
+// -- Get the Team Year
+    
+    this.googleSheets.load( this.spreadsheetId, 'Year', this.apiKey )
+      
+      .then( ( data ) => {
+
+        this.teamYear = data;
 
         refresher.complete();
 

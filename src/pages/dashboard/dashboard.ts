@@ -172,7 +172,7 @@ ionViewDidLoad(){
 // -- Get Active Team info
 
   this.spreadsheetId = this.activeTeam.teamSpreadsheetId;
-  this.apiKey = this.activeTeam.teamApiKey;
+  this.apiKey = "AIzaSyCJP9S1cWSVdi-hqWe-PVeTXeaWTQY9cHg";
 
 
 // -- Get the Team Record

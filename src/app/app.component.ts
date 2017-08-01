@@ -71,65 +71,86 @@ export class MyApp {
 
         this.globalVars.setAvailableTeams(this.availableTeams);
 
+// -- Test if Teams were found
+
+        if (this.availableTeams.length > 0){
+
 // -- Test if user wants their team loaded by default
 
-        this.storage.get( 'loadMyTeamByDefault' ).then( ( result ) => {
-          
-          if (result === true){
+          this.storage.get( 'loadMyTeamByDefault' ).then( ( result ) => {
+            
+            if (result === true){
 
-            this.storage.get( 'myTeam' ).then( ( grabbed_MyTeamId ) => {
-              
-              if (grabbed_MyTeamId !== null){
+              this.storage.get( 'myTeam' ).then( ( grabbed_MyTeamId ) => {
+                
+                if (grabbed_MyTeamId !== null){
 
-                for (var i = 0; i < this.availableTeams.length; i++){
+                  for (var i = 0; i < this.availableTeams.length; i++){
 
-                  if (grabbed_MyTeamId === this.availableTeams[i].teamId){
+                    if (grabbed_MyTeamId === this.availableTeams[i].teamId){
 
 
 // -- Set the Active Team globally
                         
-                        this.globalVars.setActiveTeam(this.availableTeams[i]);
+                          this.globalVars.setActiveTeam(this.availableTeams[i]);
 
 // -- Go to the Tab Pages
                         
-                        this.rootPage = TabsPage;
+                          this.rootPage = TabsPage;
 
-                        platform.ready().then(() => {
-                          // Okay, so the platform is ready and our plugins are available.
-                          // Here you can do any higher level native things you might need.
-                          statusBar.styleDefault();
-                          setTimeout(() => {
-                          splashScreen.hide();
-                          }, 100);
-                        });
+                          platform.ready().then(() => {
+                            // Okay, so the platform is ready and our plugins are available.
+                            // Here you can do any higher level native things you might need.
+                            statusBar.styleDefault();
+                            setTimeout(() => {
+                            splashScreen.hide();
+                            }, 100);
+                          });
+
+                    }
 
                   }
 
                 }
 
-              }
-
-              
-
-            });
-
-          }
-
-          else{
                 
-                this.rootPage = LandingPage;
 
-                platform.ready().then(() => {
-                          // Okay, so the platform is ready and our plugins are available.
-                          // Here you can do any higher level native things you might need.
-                          statusBar.styleDefault();
-                          setTimeout(() => {
-                          splashScreen.hide();
-                          }, 100);
-                        });
-              }
+              });
 
-        });
+            }
+
+            else{
+                  
+                  this.rootPage = LandingPage;
+
+                  platform.ready().then(() => {
+                            // Okay, so the platform is ready and our plugins are available.
+                            // Here you can do any higher level native things you might need.
+                            statusBar.styleDefault();
+                            setTimeout(() => {
+                            splashScreen.hide();
+                            }, 100);
+                          });
+                }
+
+          });
+
+        }
+
+        else {
+
+          this.rootPage = LandingPage;
+
+          platform.ready().then(() => {
+                    // Okay, so the platform is ready and our plugins are available.
+                    // Here you can do any higher level native things you might need.
+                    statusBar.styleDefault();
+                    setTimeout(() => {
+                    splashScreen.hide();
+                    }, 100);
+                  });
+
+        }
 
       }, (error) => {
 

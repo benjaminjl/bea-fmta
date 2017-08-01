@@ -171,15 +171,6 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
                         grabbed the data from Google Spreadsheet; we then
                         "prepare" the data with favorites and the default */
 
-                        var itemsProcessed = 0;
-                        var storageLength;
-                        
-                        this.storage.length().then(function(num){
-
-                             storageLength = num;
-                             
-                        })
-
                         /* bl - forEach parameters MUST BE (value, key), value is always first, key is always second */
                         this.storage.forEach( ( value, key) => { /* bl - PC: for each item in Local Storage */
 
@@ -216,16 +207,12 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
 
                             }
 
-                            itemsProcessed++;
+                        }).then(function(){ // This ensures that the dataArray is returned AFTER Favorites and My Team are determined, also will return if storage is empty
 
-                            if (itemsProcessed === storageLength){ // This solves the issue of dataArray being passed back before Favorites and My Team are determined via Storage
-                                
-                                /* bl - pass the dataArray back to the call */
-                                resolve(dataArray);
+                            /* bl - pass the dataArray back to the call */
+                            resolve(dataArray);
 
-                            }
-
-                        })
+                        });
 
                     }
 
@@ -239,6 +226,14 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
 
 
                 })  
+            },
+            
+            (error) => {    // Catch errors from loading teams from Master sheet, something may have happened to the sheet (ie it was unshared)
+                
+                console.log(error);
+
+                /* bl - pass the dataArray back to the call */
+                resolve([]);
             })
         });
     }

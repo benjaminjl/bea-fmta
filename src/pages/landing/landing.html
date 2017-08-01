@@ -135,7 +135,9 @@ Last Update: 03/31/2017
 
   <h4>My Team</h4>
 
-  <ion-list>
+  <div text-center *ngIf="availableTeams?.length === 0"><ion-spinner name="dots"></ion-spinner></div>  
+
+  <ion-list *ngIf="availableTeams?.length > 0">
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | myTeamFilter: 'true'">
       
@@ -173,7 +175,9 @@ Last Update: 03/31/2017
 
   <h4>Favorites</h4>
 
-  <ion-list>
+  <div text-center *ngIf="availableTeams?.length === 0"><ion-spinner name="dots"></ion-spinner></div>
+
+  <ion-list *ngIf="availableTeams?.length > 0">
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true'">
       

@@ -189,21 +189,18 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
 
                                 if (key === 'myTeam'){ /* bl - PC: IF key = myTeam */
 
-                                    for (var j = 0; j < dataArray.length; j++){ /* bl - PC: for each available team */
+                                    if (value === dataArray[i].teamId){ /* bl - PC: Does key, myTeam, value = id of team? */
 
-                                        if (value === dataArray[j].teamId){ /* bl - PC: Does key, myTeam, value = id of team? */
+                                        dataArray[i].isMyTeam = 'true'; /* bl - PC: IF YES, then it is myTeam <- */
+                                        
+                                        this.globalVars.setMyTeamIsSet(true);
+                                        
+                                    }
 
-                                            dataArray[j].isMyTeam = 'true'; /* bl - PC: IF YES, then it is myTeam <- */
-                                            
-                                            this.globalVars.setMyTeamIsSet(true);
-                                            
-                                        }
-
-                                        else{
-                                            /* bl - if this does not find a team, then it
-                                            may have been deleted from the master spreadsheet;
-                                            may want to notify user if this happens? */
-                                        }
+                                    else{
+                                        /* bl - if this does not find a team, then it
+                                        may have been deleted from the master spreadsheet;
+                                        may want to notify user if this happens? */
                                     }
 
                                 }

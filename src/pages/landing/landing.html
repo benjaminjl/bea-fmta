@@ -181,7 +181,7 @@ Last Update: 03/31/2017
 
     <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | favoriteTeamsFilter: 'true'">
       
-      <ion-item class="favorite-team" (click)="goToTeam(item)">
+      <ion-item class="team" (click)="goToTeam(item)">
         
         {{ item.teamName }}
       
@@ -210,7 +210,7 @@ Last Update: 03/31/2017
     
     </ion-item-sliding>
 
-    <ion-item class="favorite-team" *ngIf="showMessageHowToAddFavorites" (click)="openFindTeamPage()">
+    <ion-item class="team" *ngIf="showMessageHowToAddFavorites" (click)="openFindTeamPage()">
         
         Find a Team...
       

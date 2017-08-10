@@ -64,45 +64,79 @@
   favorites are displayed above
 -->
 
+<h4>By Sport</h4>
+
+<ion-list>
+    
+    <ion-item class="team">
+    
+      <ion-label>Football</ion-label>
+
+      <ion-select [selectOptions]="{mode: 'md', subTitle: 'Select your Favorites to Add'}"
+        okText="Add Teams"
+        selectedText=" "
+        [(ngModel)]="selectedTeams"
+        multiple="true"
+        (ionChange)="addTeams()"
+        (ionCancel)="cancelAddTeams">
+
+        <ion-option *ngFor="let item of availableTeams | findTeamFilter: 'football'">{{ item.teamName }}</ion-option>
+
+      </ion-select>
+    
+    </ion-item>
+
+    <ion-item class="team">
+    
+      <ion-label>Soccer</ion-label>
+
+      <ion-select [selectOptions]="{mode: 'md', subTitle: 'Select your Favorites to Add'}" okText="Add Teams" selectedText=" " [(ngModel)]="teams" multiple="true">
+
+        <ion-option *ngFor="let item of availableTeams | findTeamFilter: 'soccer'">
+          
+          {{ item.teamName }}
+        
+        </ion-option>
+
+      </ion-select>
+    
+    </ion-item>
+
+    <ion-item class="team">
+    
+      <ion-label>All Sports</ion-label>
+
+      <ion-select [selectOptions]="{mode: 'md', subTitle: 'Select your Favorites to Add'}"  okText="Add Teams" selectedText=" " [(ngModel)]="teams" multiple="true">
+
+        <ion-option *ngFor="let item of availableTeams">
+          
+          {{ item.teamName }}
+        
+        </ion-option>
+
+      </ion-select>
+    
+    </ion-item>
+
+</ion-list>
+
 <!--
   bl - using ion-search bar will result in a real feel
   search with delayed output; will try it out 25Mar2017
   Reference: https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
 -->
 
+<h4>Search</h4>
+
 <ion-searchbar [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
 
-<ion-list>
-
-  <ion-item-sliding #slidingItem *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput;
-                                         let isOdd=odd;
-                                         let isEven=even;"
-                                         [class.odd]="isOdd" 
-                                         [class.even]="isEven">
+<ion-list>                                      
     
-    <ion-item>
+    <ion-item class="team" *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput">
       
       {{ item.teamName }}
     
     </ion-item>
-
-    <ion-item-options side="right">
-      
-      <button class="add" (click)="addFavoriteTeam(slidingItem, item.teamId)">
-        
-        <ion-icon name="add" style="color: #FFFFFF"></ion-icon>
-      
-      </button>
-
-    </ion-item-options>
-
-  </ion-item-sliding>
-
-  <ion-item *ngIf="availableTeams?.length === 0">
-
-    No Teams found...
-
-  </ion-item>
 
 </ion-list>
 

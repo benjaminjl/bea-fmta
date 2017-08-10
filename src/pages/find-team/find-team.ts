@@ -40,6 +40,8 @@ availableTeams: Array<any>;
   within this page in the ionViewDidLoad function below */
   teamSearchInput: string = ""; 
 
+selectedTeams: any;
+
 // -- When page loads function
 
 ionViewDidLoad(){
@@ -120,6 +122,22 @@ ionViewDidLoad(){
     this.viewCtrl.dismiss();
 
     this.app.getRootNav().setRoot(LandingPage);
+
+  }
+
+  addTeams(){
+
+    console.log("Teams")
+
+    console.log(this.selectedTeams)
+
+    this.selectedTeams = null;
+
+  }
+
+  cancelAddTeams(){
+    
+    this.selectedTeams = null;
 
   }
 

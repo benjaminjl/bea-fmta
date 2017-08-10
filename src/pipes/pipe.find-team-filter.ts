@@ -17,7 +17,7 @@ export class FindTeamFilterPipe implements PipeTransform {
     }
 		
     return  pipeData.filter((eachItem)=> {
-      return  eachItem['teamName'].toLowerCase().includes(pipeModifier.toLowerCase());
+      return  eachItem['teamType'].toLowerCase().includes(pipeModifier.toLowerCase());
     });
   }
 }

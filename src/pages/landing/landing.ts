@@ -89,6 +89,9 @@ export class LandingPage {
   showMessageHowToAddMyTeam: boolean;
   showMessageHowToAddFavorites: boolean;
 
+  editingFavorites: boolean = false;
+  editingMyTeam: boolean = false;
+
 
 /*********************************************************************
 Name: constructor
@@ -188,7 +191,7 @@ Note:
 Last Update: 03/31/2017
 *********************************************************************/
 
-  removeFavoriteTeam(slidingItem: ItemSliding, teamId: string){
+  removeFavoriteTeam(teamId: string){
 
     this.storage.get( teamId ).then( ( result ) => {
       
@@ -208,7 +211,7 @@ Last Update: 03/31/2017
 
               handler: () => {
                 
-                slidingItem.close();
+                // After Cancel is hit
 
               }
 
@@ -222,6 +225,9 @@ Last Update: 03/31/2017
 
                 this.storage.remove(teamId);
 
+                this.globalVars.setHasFavorites(false);
+                this.showMessageHowToAddFavorites = true;
+
                 for (var i = 0; i < this.availableTeams.length; i++){
                   
                   if (teamId === this.availableTeams[i].teamId){
@@ -233,12 +239,13 @@ Last Update: 03/31/2017
                   if (this.availableTeams[i].isFavoriteTeam == 'true'){
                     
                     this.globalVars.setHasFavorites(true);
+                    this.showMessageHowToAddFavorites = false;
                     
                   }
 
                 }
               
-                slidingItem.close();
+                // After Yes is hit
 
               }
 
@@ -289,7 +296,7 @@ Note: None
 Last Update: 04/07/2017
 *********************************************************************/
 
-  addMyTeam(slidingItem: ItemSliding, teamId: string){
+  addMyTeam(teamId: string){
 
     this.storage.get( 'myTeam' ).then( ( gotten_teamId ) => {
 
@@ -306,6 +313,7 @@ Last Update: 04/07/2017
             this.globalVars.setMyTeamIsSet(true);
 
             this.showMessageHowToAddMyTeam = false;
+            this.editingMyTeam = false;
 
             let alert = this.alertCtrl.create({
 
@@ -321,7 +329,7 @@ Last Update: 04/07/2017
 
                   handler: () => {
                     
-                    slidingItem.close();
+                    // After OK is hit
 
                   }
 
@@ -355,7 +363,7 @@ Last Update: 04/07/2017
 
               handler: () => {
                 
-                slidingItem.close();
+                // After OK is hit
 
               }
 
@@ -385,7 +393,7 @@ Last Update: 04/07/2017
 
               handler: () => {
                 
-                slidingItem.close();
+                // After OK is hit
 
               }
 
@@ -414,6 +422,8 @@ Last Update: 04/07/2017
 
                     this.availableTeams[i].isMyTeam = 'true';
 
+                    this.editingMyTeam = false;
+
                     let alert = this.alertCtrl.create({
 
                       title: 'My Team Added',
@@ -428,7 +438,7 @@ Last Update: 04/07/2017
 
                           handler: () => {
 
-                            slidingItem.close();
+                            // After OK is hit
 
                           }
 
@@ -443,8 +453,6 @@ Last Update: 04/07/2017
                   }
 
                 }
-
-                slidingItem.close();
 
               }
 
@@ -482,7 +490,7 @@ References: https://ionicframework.com/docs/storage/
 Last Update: 03/31/2017
 *********************************************************************/
 
-  removeMyTeam(slidingItem: ItemSliding, teamId: string){
+  removeMyTeam(teamId: string){
 
     this.storage.get( 'myTeam' ).then( ( gotten_teamId ) => {  
       
@@ -502,7 +510,7 @@ Last Update: 03/31/2017
 
                   handler: () => {
                     
-                    slidingItem.close();
+                    // After Cancel is hit
 
                   }
 
@@ -531,7 +539,7 @@ Last Update: 03/31/2017
     
                     this.globalVars.setMyTeamIsSet(false);
                     
-                    slidingItem.close();
+                    // After Yes is hit
 
                   }
 
@@ -569,9 +577,12 @@ Last Update: 03/31/2017
 
   goToTeam(passed_Team: any){
 
+    this.editingFavorites = false;
+    this.editingMyTeam = false;
+
     this.globalVars.setActiveTeam(passed_Team); // Function call to GlobalVarsProvider
     
-    this.app.getRootNav().setRoot(TabsPage);    // Set root page/view
+    this.app.getRootNav().push(TabsPage);    // Set root page/view
 
   }
 
@@ -590,6 +601,9 @@ Last Update: 03/31/2017
 *********************************************************************/
 
   openFindTeamPage(){
+
+    this.editingFavorites = false;
+    this.editingMyTeam = false;
 
     let findTeamPageModal = this.modalCtrl.create(FindTeamPage);  // Declare the Modal
     
@@ -613,6 +627,9 @@ Last Update: 03/31/2017
 
   openHelpPage(){
 
+    this.editingFavorites = false;
+    this.editingMyTeam = false;
+
     let findTeamPageModal = this.modalCtrl.create(HelpPage);  // Declare the Modal
     
     findTeamPageModal.present();                                  // Present the Modal
@@ -633,9 +650,76 @@ Last Update: 03/31/2017
 
   openOptionsPage(){
 
+    this.editingFavorites = false;
+    this.editingMyTeam = false;
+
     let optionsPageModal = this.modalCtrl.create(OptionsPage);  // Delcare Modal
       
     optionsPageModal.present();                                 // Present Modal
+    
+  }
+
+/*********************************************************************
+Name: openOptionsPage
+Purpose: Opens the Options Page
+Parameters: None
+Description: This function will open the Options page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  editFavorites(){
+
+    this.editingFavorites = true;
+    
+  }
+
+/*********************************************************************
+Name: openOptionsPage
+Purpose: Opens the Options Page
+Parameters: None
+Description: This function will open the Options page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  saveFavorites(){
+
+    this.editingFavorites = false;
+    
+  }
+
+/*********************************************************************
+Name: openOptionsPage
+Purpose: Opens the Options Page
+Parameters: None
+Description: This function will open the Options page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  editMyTeam(){
+
+    this.editingMyTeam = true;
+    
+  }
+
+/*********************************************************************
+Name: openOptionsPage
+Purpose: Opens the Options Page
+Parameters: None
+Description: This function will open the Options page for the user.
+Note: This is a modal page that displays over the other pages.
+References: https://github.com/driftyco/ionic-conference-app/blob/master/src/pages/schedule/schedule.ts
+Last Update: 03/31/2017
+*********************************************************************/
+
+  saveMyTeam(){
+
+    this.editingMyTeam = false;
     
   }
 

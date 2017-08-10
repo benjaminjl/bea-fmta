@@ -1,23 +1,23 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'findTeamFilter'
+  name: 'byTeamTypeFilter'
 })
 
-export class FindTeamFilterPipe implements PipeTransform {
+export class ByTeamTypeFilterPipe implements PipeTransform {
   transform(pipeData, pipeModifier) {
 		
 		if (pipeData==null) {
-      return null;
+      return [];
     }
 
     if (pipeModifier==null || pipeModifier=="") {
       
-      return null;
+      return [];
     }
 		
     return  pipeData.filter((eachItem)=> {
-      return  eachItem['teamName'].toLowerCase().includes(pipeModifier.toLowerCase());
+      return  eachItem['teamType'].toLowerCase().includes(pipeModifier.toLowerCase());
     });
   }
 }

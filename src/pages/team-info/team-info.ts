@@ -23,13 +23,14 @@ Note:
 Last Update: 07/16/17
 *********************************************************************/
 
-  import { Component } from '@angular/core';  // Exact functionality unknown
+  import { Component, ViewChild } from '@angular/core';  // Exact functionality unknown
 
   import {    
     
     NavController,    // Controller used to create navCtrl which is used for changing pages/views
     ViewController, // Controller used to create viewCtrl which is used for closing the Menu modal
-    App               // Controller used to create app which is used for setting the page/view roots
+    App,               // Controller used to create app which is used for setting the page/view roots
+    Content
     
   } from 'ionic-angular';
   
@@ -76,6 +77,8 @@ Last Update: 07/20/2017
 *********************************************************************/
 
 export class TeamInfoPage {
+
+  @ViewChild(Content) content: Content;
 
 // -- Dynamic variables
 
@@ -204,6 +207,12 @@ ionViewDidLoad(){
       });
 }
 
+
+ionViewDidEnter(){
+
+  this.content.scrollToTop();
+
+}
 
 
 

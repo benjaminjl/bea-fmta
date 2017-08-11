@@ -52,6 +52,8 @@
   
 </ion-toolbar>
 
+<ion-searchbar style="width: 95%" placeholder="Search by team name..." [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
+
 </ion-header>
 
 <ion-content class="page-content" padding>
@@ -70,9 +72,7 @@
   Reference: https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
 -->
 
-<ion-searchbar placeholder="Search by team name..." [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
-
-<ion-list>                                      
+<ion-list no-margin>                                      
     
     <ion-item text-wrap (click)="addFavoriteTeam(item.teamId)" class="team" class="team" *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput">
 

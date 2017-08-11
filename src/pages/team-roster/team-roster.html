@@ -41,12 +41,6 @@ Last Update: 07/20/2017
           Home
         
         </ion-col>
-
-        <ion-col text-right style="color:#324851" (click)="openSearchTeamRosterPage()">
-          
-          Search...
-        
-        </ion-col>
       
       </ion-row>
     
@@ -88,7 +82,10 @@ Last Update: 07/20/2017
   
 </ion-toolbar>
   
+<ion-searchbar style="width: 95%" placeholder="Search roster..." [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
+
 </ion-header>
+
 
 <ion-content [ngStyle]="{'background-color': activeTeamPrimaryColor}" padding>
 
@@ -108,7 +105,7 @@ Last Update: 07/20/2017
 
   <ion-list *ngIf="teamRoster">
 
-    <ion-item *ngFor="let item of teamRoster"> 
+    <ion-item *ngFor="let item of teamRoster | rosterFilter: teamSearchInput"> 
       
 
       <ion-grid no-padding>

@@ -41,12 +41,6 @@ Last Update: 07/20/2017
           Home
         
         </ion-col>
-
-        <ion-col text-right style="color:#324851" (click)="openSearchTeamSchedulePage()">
-          
-          Search...
-        
-        </ion-col>
       
       </ion-row>
     
@@ -87,7 +81,9 @@ Last Update: 07/20/2017
   </ion-grid>
   
 </ion-toolbar>
-  
+
+<ion-searchbar style="width: 95%" placeholder="Search schedule..." [(ngModel)]="teamSearchInput" [showCancelButton]="shouldShowCancel"></ion-searchbar>
+ 
 </ion-header>
 
 <ion-content [ngStyle]="{'background-color': activeTeamPrimaryColor}" padding>
@@ -105,7 +101,7 @@ Last Update: 07/20/2017
 
   <ion-list *ngIf="teamSchedule">
 
-    <ion-item text-wrap *ngFor="let item of teamSchedule">
+    <ion-item text-wrap *ngFor="let item of teamSchedule | scheduleFilter: teamSearchInput">
 
       <ion-grid no-padding> 
 

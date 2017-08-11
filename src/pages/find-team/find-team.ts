@@ -105,6 +105,33 @@ ionViewDidLoad(){
         
         }
 
+        //-- Remove My Team if it is the same team
+
+        this.storage.get( 'myTeam' ).then( ( gotten_teamId ) => {  
+          
+          if (gotten_teamId === teamId) {     
+
+            this.storage.remove('myTeam');
+
+            for (var i = 0; i < this.availableTeams.length; i++){ 
+
+              if (teamId === this.availableTeams[i].teamId){
+            
+                delete this.availableTeams[i].isMyTeam;
+                
+                this.globalVars.setMyTeamIsSet(false);
+
+              }
+            }
+
+            this.storage.remove('loadMyTeamByDefault');
+
+            this.globalVars.setMyTeamIsSet(false);
+
+          }
+
+        });
+
       }
 
     })

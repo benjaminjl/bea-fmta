@@ -72,7 +72,7 @@
   Reference: https://ionicframework.com/docs/v2/api/components/searchbar/Searchbar/
 -->
 
-<ion-list no-margin>                                      
+<ion-list *ngIf="teamSearchInput" no-margin>                                      
     
     <ion-item text-wrap (click)="addFavoriteTeam(item.teamId)" class="team" class="team" *ngFor="let item of availableTeams | findTeamFilter: teamSearchInput">
 

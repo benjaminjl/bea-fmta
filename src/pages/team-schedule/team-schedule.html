@@ -124,7 +124,7 @@ Last Update: 07/20/2017
 
         </ion-row>
 
-        <ion-row *ngIf="item.scheduleResult!=null" padding-top>
+        <ion-row *ngIf="item.scheduleResult!==''" padding-top>
 
           <ion-col class="col-left" *ngIf="item.scheduleResult=='W'"> <h3 style="font-weight: 500;">{{ item.scheduleResult }}</h3> </ion-col>
           <ion-col class="col-left" *ngIf="item.scheduleResult=='L'"> <h3>{{ item.scheduleResult }}</h3> </ion-col>
@@ -132,7 +132,7 @@ Last Update: 07/20/2017
 
         </ion-row>
 
-        <ion-row *ngIf="item.scheduleResult!=null">
+        <ion-row *ngIf="item.scheduleResult!==''">
 
           <ion-col col-16 class="col-left"> <p> {{ item.scheduleOpponent }} </p> </ion-col>
           <ion-col class="col-right"> <p>  <ion-icon name="md-arrow-dropright" *ngIf="item.scheduleResult=='L'"></ion-icon> {{ item.scheduleTheirScore }} </p> </ion-col>

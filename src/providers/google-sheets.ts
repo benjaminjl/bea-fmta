@@ -78,7 +78,17 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
 
                             for (var j = 0; j < columns.values[0].length; j++) {
 
-                                tempObj[columns.values[0][j]] = rows.values[i][j];
+                                if(rows.values[i][j] !== undefined){ // If value is not undefined AKA is not a blank cell
+                                    
+                                    tempObj[columns.values[0][j]] = rows.values[i][j];
+
+                                }
+
+                                else{ // If value is undefined AKA is a blank cell then value should be blank string for searching purposes
+
+                                    tempObj[columns.values[0][j]] = "";
+
+                                }
 
                             }
                             
@@ -157,9 +167,19 @@ load( spreadsheetId: string, sheetId: string, apiKey: string ) {
                             var tempObj = {}
 
                             for (var j = 0; j < columns.values[0].length; j++) {
+                                
+                                if(rows.values[i][j] !== undefined){ // If value is not undefined AKA is not a blank cell
+                                    
+                                    tempObj[columns.values[0][j]] = rows.values[i][j];
 
-                                tempObj[columns.values[0][j]] = rows.values[i][j];
+                                }
 
+                                else{ // If value is undefined AKA is a blank cell then value should be blank string for searching purposes
+
+                                    tempObj[columns.values[0][j]] = "";
+
+                                }
+                                
                             }
                             
                             /* bl - push the completed object to the dataArray */

@@ -150,9 +150,26 @@ ionViewDidLoad(){
 
   this.activeTeamName = this.activeTeam.teamName;
 
-  this.activeTeamPrimaryColor = this.activeTeam.teamPrimaryColor;
-  this.activeTeamSecondaryColor = this.activeTeam.teamSecondaryColor;
-  this.activeTeamComplementColor = this.activeTeam.teamComplementColor;
+//-- Colors
+//-- If any colors are blank, apply default colors
+
+  if(   this.activeTeam.teamPrimaryColor === ""
+     || this.activeTeam.teamSecondaryColor === ""
+     || this.activeTeam.teamComplementColor === ""){
+
+    this.activeTeamPrimaryColor = "#324851";
+    this.activeTeamSecondaryColor = "#86AC41";
+    this.activeTeamComplementColor = "#FFFFFF";
+
+  }
+
+  else{
+
+    this.activeTeamPrimaryColor = this.activeTeam.teamPrimaryColor;
+    this.activeTeamSecondaryColor = this.activeTeam.teamSecondaryColor;
+    this.activeTeamComplementColor = this.activeTeam.teamComplementColor;
+
+  }
 
 // -- Get Active Team info
 

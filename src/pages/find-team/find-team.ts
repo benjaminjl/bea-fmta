@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ItemSliding, AlertController, App, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { ItemSliding, AlertController, App, NavController, NavParams, ViewController, Content } from 'ionic-angular';
 
 /* bl - new providers created by bl */
 import { GoogleSheetsProvider } from '../../providers/google-sheets';
@@ -32,6 +32,8 @@ export class FindTeamPage {
 
     ) {}
 
+@ViewChild(Content) content: Content;
+
  // -- Variables
 
 availableTeams: Array<any>;
@@ -50,6 +52,12 @@ ionViewDidLoad(){
 // -- Get Available Teams from GlobalVarsProvider
 // -- Available Teams is controlled on the Landing Page
   this.availableTeams = this.globalVars.getAvailableTeams();
+}
+
+ionViewWillEnter(){
+
+  this.content.scrollToTop();
+  
 }
 
 /* bl - this function is triggered by the user
@@ -140,8 +148,6 @@ ionViewDidLoad(){
 
   closeMenu() {
   
-    this.viewCtrl.dismiss();
-
     this.app.getRootNav().setRoot(LandingPage);
 
   }

@@ -23,7 +23,7 @@ Note:
 Last Update: 03/31/2017
 *********************************************************************/
 
-  import { Component } from '@angular/core'; // Exact functionality unknown
+  import { Component, ViewChild } from '@angular/core'; // Exact functionality unknown
 
   import {
     
@@ -32,7 +32,8 @@ Last Update: 03/31/2017
     ItemSliding,      // Declares the the slidingItem variable which is passed in the add/remove Favories and My Team functions below
     AlertController,  // Controller used to create alertCtrl which is used to create interactive popups
     ModalController,  // Controller used to create the modalCtrl which is used for showing the menus
-    App               // Controller used to create app which is used for setting the page/view roots
+    App,              // Controller used to create app which is used for setting the page/view roots
+    Content
 
   } from 'ionic-angular';
 
@@ -82,6 +83,8 @@ Last Update: 03/31/2017
 *********************************************************************/
 
 export class LandingPage {
+
+  @ViewChild(Content) content: Content;
 
 // -- Dynamic variables
 
@@ -154,17 +157,29 @@ References:
 Last Update: 07/30/2017
 *********************************************************************/
   
-  ionViewDidEnter(){
+  ionViewWillEnter(){
+
+    this.content.scrollToTop();
 
     if (this.globalVars.getMyTeamIsSet() !== true){
 
       this.showMessageHowToAddMyTeam = true;
 
     }
+    else{
+
+      this.showMessageHowToAddMyTeam = false;
+      
+    }
 
     if (this.globalVars.getHasFavorites() !== true){
 
       this.showMessageHowToAddFavorites = true;
+
+    }
+    else{
+
+      this.showMessageHowToAddFavorites = false;
 
     }
   
@@ -399,11 +414,9 @@ Last Update: 03/31/2017
   openFindTeamPage(){
 
     this.editingFavorites = false;
-    this.editingMyTeam = false;
+    this.editingMyTeam = false;                                 // Present the Modal
 
-    let findTeamPageModal = this.modalCtrl.create(FindTeamPage);  // Declare the Modal
-    
-    findTeamPageModal.present();                                  // Present the Modal
+    this.app.getRootNav().push(FindTeamPage);
 
   }
 
@@ -424,9 +437,7 @@ Last Update: 03/31/2017
     this.editingFavorites = false;
     this.editingMyTeam = false;
 
-    let optionsPageModal = this.modalCtrl.create(OptionsPage);  // Delcare Modal
-      
-    optionsPageModal.present();                                 // Present Modal
+    this.app.getRootNav().push(OptionsPage);
     
   }
 

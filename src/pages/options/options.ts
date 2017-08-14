@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AlertController, App, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { AlertController, App, NavController, NavParams, ViewController, Content } from 'ionic-angular';
 
 /* bl - new providers created by bl */
 import { GoogleSheetsProvider } from '../../providers/google-sheets';
@@ -31,6 +31,8 @@ export class OptionsPage {
     public alertCtrl: AlertController
 
     ) {}
+
+@ViewChild(Content) content: Content;
 
  // -- Variables
 
@@ -75,9 +77,13 @@ ionViewDidLoad(){
 
 }
 
-closeMenu() {
+ionViewWillEnter(){
 
-  this.viewCtrl.dismiss();
+  this.content.scrollToTop();
+
+}
+
+closeMenu() {
 
   this.app.getRootNav().setRoot(LandingPage);
 
